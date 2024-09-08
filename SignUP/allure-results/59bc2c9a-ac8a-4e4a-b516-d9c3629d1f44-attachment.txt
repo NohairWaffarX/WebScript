@@ -1,0 +1,8 @@
+[ReportManager] Setting "targetOperatingSystem" property with "windows". @05-09-2024 12:26:32.0379 PM
+[ReportManager] Capabilities {acceptInsecureCerts: true, browserName: chrome, goog:chromeOptions: {args: [--start-maximized], extensions: [], prefs: {download.default_directory: C:\Users\n.jamal.WAFFARX\Si..., download.prompt_for_download: false, profile.default_content_settings.popups: 0}}, pageLoadStrategy: normal, timeouts: {pageLoad: 60000, script: 60000}, unhandledPromptBehavior: ignore, webSocketUrl: true} @05-09-2024 12:26:32.0501 PM
+[ReportManager] Attempting to run locally on: "Windows | Chrome". @05-09-2024 12:26:32.0501 PM
+[ReportManager] Identifying OS/Driver combination. Please note that if a new browser/driver executable will be downloaded it may take some time depending on your connection... @05-09-2024 12:26:32.0501 PM
+[ReportManager] Successfully Opened: "Windows | Chrome". @05-09-2024 12:26:40.0720 PM
+[ReportManager] Target URL: "https://www.waffarx.com/en-eg" @05-09-2024 12:26:40.0777 PM
+[ReportManager] Initial URL: "about:blank" @05-09-2024 12:26:40.0839 PM
+[ReportManager] Navigate to url "https://www.waffarx.com/en-eg". @05-09-2024 12:26:45.0116 PM

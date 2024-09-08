@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="My Test Suite">
+    <test name="Test All Classes">
+        <classes>
+            <class name="WaffarXWEB.SignUP_Page"/>
+            <class name="WaffarXWEB.Login_Page"/>
+            <class name="WaffarXWEB.Verification_Account"/>
+            <class name="WaffarXWEB.Search"/>
+            <class name="WaffarXWEB.ContactUS"/>
+            <class name="WaffarXWEB.Universal_Linking"/>
+            <class name="WaffarXWEB.Refer_andEarn"/>
+            <class name="WaffarXWEB.AccountSettings"/>
+            <class name="WaffarXWEB.CIB_SignUPValidations"/>
+            <class name="WaffarXWEB.GiftCards"/>
+            <class name="WaffarXWEB.ForgetPassword"/>
+        </classes>
+    </test>
+</suite>

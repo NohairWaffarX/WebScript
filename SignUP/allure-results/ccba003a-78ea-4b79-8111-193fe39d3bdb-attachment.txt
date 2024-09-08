@@ -1,0 +1,23 @@
+
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                        Starting Execution: '1 out of 89' test cases in the current suite                                        
+                         Test Method: 'WaffarXWEB.AccountSettings.UpdateName_Check_that_ErrorAppear_whenFields_AreEmpty'                         
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[ReportManager] Waiting for element to be present; elementLocator "By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button", isExpectedToBeVisible"true"... @05-09-2024 12:26:46.0181 PM
+[ReportManager] Wait to be ready "Waited for the element's state of visibility to be (true). Element locator (By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button)" against "Join Now". @05-09-2024 12:26:47.0798 PM
+[ReportManager] Click using javascript "Join Now". @05-09-2024 12:26:48.0990 PM
+[ReportManager] Click using javascript "Already a member?". @05-09-2024 12:26:50.0481 PM
+[ReportManager] Text cleared Using Native Clear @05-09-2024 12:26:51.0145 PM
+[ReportManager] Type "gnohair@gmail.com" into "Email Address". @05-09-2024 12:26:51.0390 PM
+[ReportManager] Text cleared Using Native Clear @05-09-2024 12:26:51.0753 PM
+[ReportManager] Type "Ng555555" into "Password". @05-09-2024 12:26:51.0901 PM
+[ReportManager] Key press "ENTER" against "Sign in". @05-09-2024 12:26:52.0464 PM
+[ReportManager] Expected condition failed: waiting for com.shaft.gui.element.internal.ElementActionsHelper$$Lambda/0x000002401d6eb960@38d9c9c4 (tried for 60 second(s) with 100 milliseconds interval) || no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="fixedHeader"]/div[3]/div/div[2]/div[3]/div/i"} @05-09-2024 12:27:52.0571 PM
+[ReportManager] Failed to Identify unique element. @05-09-2024 12:27:55.0908 PM
+[ReportManager] Successfully created attachment 'Screenshot - Identify unique element_12-27-55-020_05092024' @05-09-2024 12:27:55.0911 PM
+[ReportManager] Successfully created attachment 'Identify unique element - page snapshot' @05-09-2024 12:27:55.0938 PM
+[ReportManager] Failed to Hover over "By.xpath: //*[@id="fixedHeader"]/div[3]/div/div[2]/div[3]/div/i". Root cause: "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="fixedHeader"]/div[3]/div/div[2]/div[3]/div/i"}" @05-09-2024 12:27:57.0252 PM
+[ReportManager] Successfully created attachment 'Screenshot - Hover_12-27-56-622_05092024' @05-09-2024 12:27:57.0255 PM
+[ReportManager] Successfully created attachment 'Hover - page snapshot' @05-09-2024 12:27:57.0292 PM
+[ReportManager] Successfully created attachment 'Element Action Exception - Hover - Stacktrace' @05-09-2024 12:27:57.0302 PM
