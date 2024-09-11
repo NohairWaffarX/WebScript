@@ -148,7 +148,7 @@
                                 -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                             </argLine>
                             <suiteXmlFiles>
-                                <suiteXmlFile>C:/Users/n.jamal.WAFFARX/SignUP/testng.xml</suiteXmlFile> <!-- Path to your testng.xml file -->
+                                <suiteXmlFile>testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <properties>
                                 <property>
