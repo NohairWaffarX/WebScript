@@ -1,0 +1,18 @@
+
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                        Starting Execution: '1 out of 19' test cases in the current suite                                        
+                      Test Method: 'WaffarXWEB.Login_Page.Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword'                      
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[ReportManager] Waiting for element to be present; elementLocator "By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button", isExpectedToBeVisible"true"... @12-09-2024 00:17:48.0452 AM
+[ReportManager] Wait to be ready "Waited for the element's state of visibility to be (true). Element locator (By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button)" against "Join Now". @12-09-2024 00:17:50.0334 AM
+[ReportManager] Click using javascript "Join Now". @12-09-2024 00:17:51.0012 AM
+[ReportManager] Click using javascript "Already a member?". @12-09-2024 00:17:51.0858 AM
+[ReportManager] Text cleared Using Native Clear @12-09-2024 00:17:52.0686 AM
+[ReportManager] Type "gnohairrr@gmail.com" into "Email Address". @12-09-2024 00:17:53.0031 AM
+[ReportManager] Text cleared Using Native Clear @12-09-2024 00:17:53.0383 AM
+[ReportManager] Type "Ng555555" into "Password". @12-09-2024 00:17:53.0554 AM
+[ReportManager] Key press "ENTER" against "Sign in". @12-09-2024 00:17:54.0169 AM
+[ReportManager] Expected "Wrong Username Or Password", and actual "Wrong Username Or Password" @12-09-2024 00:17:55.0017 AM
+[ReportManager] Successfully created attachment 'Screenshot - Verify_00-17-59-176_12092024' @12-09-2024 00:17:59.0186 AM
+[ReportManager] Verification passed @12-09-2024 00:17:59.0190 AM
