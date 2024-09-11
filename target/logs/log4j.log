@@ -1,0 +1,83 @@
+[INFO ] 2024-09-12 00:17:23.759 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                                    Powered by [1mSHAFT v.8.2.20240402[22m                                                    
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:17:23.777 [] ReportManager - Checking for engine updates...
+[INFO ] 2024-09-12 00:17:23.842 [] ReportManager - Initializing Allure Reporting Environment...
+[INFO ] 2024-09-12 00:17:23.843 [] ReportManager - Initializing Summary Reporting Environment...
+[INFO ] 2024-09-12 00:17:23.872 [main] ReportManager - TestNG run detected...
+[INFO ] 2024-09-12 00:17:25.055 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                             Starting execution of suite setup configuration method                                             
+                                          'com.shaft.listeners.internal.ConfigurationHelper.suiteSetup'                                          
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:17:25.177 [main] ReportManager - Initializing Important Links...
+[INFO ] 2024-09-12 00:17:25.220 [main] ReportManager - Initializing Properties...
+[INFO ] 2024-09-12 00:17:25.685 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                            Starting execution of setup browser configuration method                                            
+                                                      'WaffarXWEB.Login_Page.setupBrowser'                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:17:25.743 [main] ReportManager - Setting "targetOperatingSystem" property with "windows".
+[INFO ] 2024-09-12 00:17:25.827 [main] ReportManager - Capabilities {acceptInsecureCerts: true, browserName: chrome, goog:chromeOptions: {args: [--start-maximized], extensions: [], prefs: {download.default_directory: C:\Users\n.jamal.WAFFARX\Si..., download.prompt_for_download: false, profile.default_content_settings.popups: 0}}, pageLoadStrategy: normal, timeouts: {pageLoad: 60000, script: 60000}, unhandledPromptBehavior: ignore, webSocketUrl: true}
+[INFO ] 2024-09-12 00:17:25.827 [main] ReportManager - Attempting to run locally on: "Windows | Chrome".
+[INFO ] 2024-09-12 00:17:25.827 [main] ReportManager - Identifying OS/Driver combination. Please note that if a new browser/driver executable will be downloaded it may take some time depending on your connection...
+[INFO ] 2024-09-12 00:17:27.948 [] ReportManager - Loaded OpenCV "opencv_java490".
+[WARN ] 2024-09-12 00:17:35.659 [main] ReportManager - Sep 12, 2024 12:17:35 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+[WARN ] 2024-09-12 00:17:35.659 [main] ReportManager - WARNING: Unable to find CDP implementation matching 128
+[WARN ] 2024-09-12 00:17:35.659 [main] ReportManager - Sep 12, 2024 12:17:35 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+[WARN ] 2024-09-12 00:17:35.659 [main] ReportManager - WARNING: Unable to find version of CDP to use for 128.0.6613.120. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[WARN ] 2024-09-12 00:17:35.687 [] ReportManager - ⚠️ You're using an outdated engine version "8.2.20240402" ⚠️
+Kindly upgrade to the latest one "8.3.20240829" to ensure the best experience.
+For more information click here: https://github.com/ShaftHQ/SHAFT_ENGINE/releases/latest .
+[INFO ] 2024-09-12 00:17:35.697 [main] ReportManager - Successfully Opened: "Windows | Chrome".
+[INFO ] 2024-09-12 00:17:35.740 [main] ReportManager - Target URL: "https://www.waffarx.com/en-eg"
+[INFO ] 2024-09-12 00:17:35.796 [main] ReportManager - Initial URL: "about:blank"
+[INFO ] 2024-09-12 00:17:47.763 [main] ReportManager - Navigate to url "https://www.waffarx.com/en-eg".
+[INFO ] 2024-09-12 00:17:47.773 [main] ReportManager - Successfully created attachment 'SHAFT Engine Logs - Current Method log: setupBrowser'
+[INFO ] 2024-09-12 00:17:48.380 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                        Starting Execution: '1 out of 19' test cases in the current suite                                        
+                      Test Method: 'WaffarXWEB.Login_Page.Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword'                      
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:17:48.452 [main] ReportManager - Waiting for element to be present; elementLocator "By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button", isExpectedToBeVisible"true"...
+[INFO ] 2024-09-12 00:17:50.334 [main] ReportManager - Wait to be ready "Waited for the element's state of visibility to be (true). Element locator (By.xpath: //*[@id='heatmapArea']/main/div[2]/div[1]/button)" against "Join Now".
+[INFO ] 2024-09-12 00:17:51.012 [main] ReportManager - Click using javascript "Join Now".
+[INFO ] 2024-09-12 00:17:51.858 [main] ReportManager - Click using javascript "Already a member?".
+[DEBUG] 2024-09-12 00:17:52.686 [main] ReportManager - Text cleared Using Native Clear
+[INFO ] 2024-09-12 00:17:53.031 [main] ReportManager - Type "gnohairrr@gmail.com" into "Email Address".
+[DEBUG] 2024-09-12 00:17:53.383 [main] ReportManager - Text cleared Using Native Clear
+[INFO ] 2024-09-12 00:17:53.554 [main] ReportManager - Type "Ng555555" into "Password".
+[INFO ] 2024-09-12 00:17:54.170 [main] ReportManager - Key press "ENTER" against "Sign in".
+[INFO ] 2024-09-12 00:17:55.017 [main] ReportManager - Expected "Wrong Username Or Password", and actual "Wrong Username Or Password"
+[INFO ] 2024-09-12 00:17:59.186 [main] ReportManager - Successfully created attachment 'Screenshot - Verify_00-17-59-176_12092024'
+[INFO ] 2024-09-12 00:17:59.190 [main] ReportManager - Verification passed
+[INFO ] 2024-09-12 00:17:59.209 [main] ReportManager - Successfully created attachment 'SHAFT Engine Logs - Current Method log: Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword'
+[INFO ] 2024-09-12 00:17:59.210 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+           Finished Execution of Test Method: 'WaffarXWEB.Login_Page.Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword'           
+                                                              Test Status: 'Passed'                                                              
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:17:59.357 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                             Starting execution of close driver configuration method                                             
+                                                       'WaffarXWEB.Login_Page.CloseDriver'                                                       
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:18:00.609 [main] ReportManager - Successfully Closed Driver.
+[INFO ] 2024-09-12 00:18:00.614 [main] ReportManager - Successfully created attachment 'SHAFT Engine Logs - Current Method log: CloseDriver'
+[INFO ] 2024-09-12 00:18:00.623 [main] ReportManager - 
+[0;7m------------------------------------------------------------------------------------------------------------------------------------------------
+                                            Starting execution of setup browser configuration method                                            
+                                                      'WaffarXWEB.SignUP_Page.setupBrowser'                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------
+[0m
+[INFO ] 2024-09-12 00:18:00.629 [main] ReportManager - Setting "targetOperatingSystem" property with "windows".
+[INFO ] 2024-09-12 00:18:00.645 [main] ReportManager - Capabilities {acceptInsecureCerts: true, browserName: chrome, goog:chromeOptions: {args: [--start-maximized], extensions: [], prefs: {download.default_directory: C:\Users\n.jamal.WAFFARX\Si..., download.prompt_for_download: false, profile.default_content_settings.popups: 0}}, pageLoadStrategy: normal, timeouts: {pageLoad: 60000, script: 60000}, unhandledPromptBehavior: ignore, webSocketUrl: true}
+[INFO ] 2024-09-12 00:18:00.652 [main] ReportManager - Attempting to run locally on: "Windows | Chrome".
+[INFO ] 2024-09-12 00:18:00.652 [main] ReportManager - Identifying OS/Driver combination. Please note that if a new browser/driver executable will be downloaded it may take some time depending on your connection...
