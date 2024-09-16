@@ -148,7 +148,7 @@
                                 -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                             </argLine>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                                <suiteXmlFile>testng.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <properties>
                                 <property>
