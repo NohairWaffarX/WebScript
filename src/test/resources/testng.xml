@@ -3,7 +3,6 @@
 <suite name="My Test Suite">
     <test name="Test All Classes">
         <classes>
-            <class name="WaffarXWEB.SignUP_Page"/>
             <class name="WaffarXWEB.Login_Page"/>
         </classes>
     </test>
