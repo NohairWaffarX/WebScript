@@ -18,6 +18,7 @@
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.github.shafthq</groupId>
@@ -31,8 +32,8 @@
             <version>7.10.2</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -58,7 +59,9 @@
             </plugin>
         </plugins>
     </build>
+
     <profiles>
+        <!-- TestNG Profile -->
         <profile>
             <id>testng</id>
             <activation>
@@ -94,6 +97,10 @@
                             <argLine>
                                 -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                             </argLine>
+                            <suiteXmlFiles>
+                                <!-- Update the path to match the location of your testng.xml file -->
+                                <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                            </suiteXmlFiles>
                             <properties>
                                 <property>
                                     <name>usedefaultlisteners</name>
@@ -109,6 +116,8 @@
                 </plugins>
             </build>
         </profile>
+
+        <!-- JUnit Profile -->
         <profile>
             <id>junit</id>
             <activation>
@@ -147,9 +156,6 @@
                             <argLine>
                                 -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                             </argLine>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>testng.xml</suiteXmlFile>
-                            </suiteXmlFiles>
                             <properties>
                                 <property>
                                     <name>usedefaultlisteners</name>
