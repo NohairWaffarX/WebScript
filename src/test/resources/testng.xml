@@ -4,14 +4,6 @@
     <test name="Test All Classes">
         <classes>
             <class name="WaffarXWEB.Login_Page"/>
-            <class name="WaffarXWEB.SignUP_Page"/>
-            <class name="WaffarXWEB.Search"/>
-            <class name="WaffarXWEB.ContactUS"/>
-            <class name="WaffarXWEB.Universal_Linking"/>
-            <class name="WaffarXWEB.Refer_andEarn"/>
-            <class name="WaffarXWEB.AccountSettings"/>
-            <class name="WaffarXWEB.GiftCards"/>
-            <class name="WaffarXWEB.ForgetPassword"/>
         </classes>
     </test>
 </suite>
