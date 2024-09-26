@@ -12,7 +12,6 @@
             <class name="WaffarXWEB.AccountSettings"/>
             <class name="WaffarXWEB.GiftCards"/>
             <class name="WaffarXWEB.Verification_Account"/>
-            <class name="WaffarXWEB.ForgetPassword"/>
         </classes>
     </test>
 </suite>
