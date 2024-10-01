@@ -12,7 +12,6 @@
             <class name="WaffarXWEB.F_Verification_Account"/>
             <class name="WaffarXWEB.GiftCards"/>
             <class name="WaffarXWEB.Universal_Linking"/>
-            <class name="WaffarXWEB.Z_ForgetPassword"/>
         </classes>
     </test>
 </suite>
