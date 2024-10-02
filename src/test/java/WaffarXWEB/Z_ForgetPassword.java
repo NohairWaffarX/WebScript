@@ -38,7 +38,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 1)
-    public void Email_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
+    public void A_Email_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordEmail);
@@ -47,7 +47,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 2)
-    public void Email_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
+    public void B_Email_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordEmail);
@@ -57,7 +57,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 3)
-    public void Email_Check_that_ErrorAppear_when_InsertEmail_notFound_inWaffarX()
+    public void C_Email_Check_that_ErrorAppear_when_InsertEmail_notFound_inWaffarX()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordEmail);
@@ -67,7 +67,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 4)
-    public void Email_Check_that_System_TerminateSpaces()
+    public void D_Email_Check_that_System_TerminateSpaces()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordEmail);
@@ -78,7 +78,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 5)
-    public void Mobile_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
+    public void E_Mobile_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button();
         driver.element().click(ForgetPasswordMobile);
@@ -87,7 +87,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 6)
-    public void Mobile_Check_that_ErrorAppear_when_insert_LessThan_MinLimitation_inPhone()
+    public void F_Mobile_Check_that_ErrorAppear_when_insert_LessThan_MinLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -96,7 +96,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(MobileError).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
     @Test(priority = 7)
-    public void Mobile_Check_that_ErrorAppear_when_insert_GreaterThan_MaxLimitation_inPhone()
+    public void G_Mobile_Check_that_ErrorAppear_when_insert_GreaterThan_MaxLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -106,7 +106,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 8)
-    public void Mobile_Check_that_ErrorAppear_when_insertNumber_NotJoin_inWaffarX()
+    public void H_Mobile_Check_that_ErrorAppear_when_insertNumber_NotJoin_inWaffarX()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -117,7 +117,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 9)
-    public void Mobile_Check_that_OTP_sendCorrectlyWhen_insertCorrectNumber()
+    public void I_Mobile_Check_that_OTP_sendCorrectlyWhen_insertCorrectNumber()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -128,7 +128,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 10)
-    public void Mobile_OTPWindow_Check_that_ErrorAppear_without_insert_code()
+    public void J_Mobile_OTPWindow_Check_that_ErrorAppear_without_insert_code()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -141,7 +141,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 11)
-    public void Mobile_OTPWindow_Check_that_ErrorAppear_when_insert_WrongCode()
+    public void K_Mobile_OTPWindow_Check_that_ErrorAppear_when_insert_WrongCode()
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
@@ -170,7 +170,7 @@ public class Z_ForgetPassword
     }
 
     @Test(priority = 12)
-    public void ForgetPassword_exceed3times() throws InterruptedException {
+    public void L_ForgetPassword_exceed3times() throws InterruptedException {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
 
