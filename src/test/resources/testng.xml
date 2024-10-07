@@ -5,7 +5,6 @@
         <classes>
             <class name="WaffarXWEB.D_AccountSettings"/>
             <class name="WaffarXWEB.F_Verification_Account"/>
-            <class name="WaffarXWEB.Z_ForgetPassword"/>
             <class name="WaffarXWEB.B_Login_Page"/>
             <class name="WaffarXWEB.A_SignUP_Page"/>
             <class name="WaffarXWEB.E_Refer_andEarn"/>
