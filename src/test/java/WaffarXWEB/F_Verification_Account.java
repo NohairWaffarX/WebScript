@@ -41,8 +41,8 @@ public class F_Verification_Account
         SendCode_Button = By.id("SendCode");
     }
 
-    @Test(priority = 1)
-    public void Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
+    @Test
+    public void A_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
     {
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "01277249447");
@@ -51,28 +51,28 @@ public class F_Verification_Account
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
     }
 
-    @Test(priority = 2)
-    public void Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
+    @Test
+    public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
     {
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "012");
         driver.element().click(SendCode_Button);
-        By Error= By.id("phone-error") ;
+        By Error= By.id("phone-error");
         driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
+    @Test
+    public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
     {
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "0127724999999999888");
         driver.element().click(SendCode_Button);
-        By Error= By.id("WrongEgMobNumber") ;
+        By Error= By.id("WrongEgMobNumber");
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
 
     }
-    @Test(priority = 4)
-    public void Verify_Account_exceed3times() throws InterruptedException {
+    @Test
+    public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);
@@ -94,8 +94,8 @@ public class F_Verification_Account
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
 
-    @Test(priority = 5 , dependsOnMethods = { "Verify_Account_exceed3times" })
-    public void Check_that_ErrorAppear_whenInsert_WrongVerificationCode() {
+    @Test(dependsOnMethods = { "Verify_Account_exceed3times" })
+    public void E_Check_that_ErrorAppear_whenInsert_WrongVerificationCode() {
         Open_PopupOF_VerifyAccount();
 
         By VerificationCode_Text = By.xpath("(//*[@id='VerificationCode'])[2]");
