@@ -38,8 +38,8 @@ public class Universal_Linking
         driver.element().click(Help_choice);
     }
 
-    @Test(priority = 1)
-    public void Check_that_All_UniversalLinking_InRefer_WorkCorrectly() {
+    @Test
+    public void A_Check_that_All_UniversalLinking_InRefer_WorkCorrectly() {
         Open_HelpPage();
 
         By ReferChoice = By.xpath("//*[@id=\"heatmapArea\"]/main/div[2]/div/div[1]/ul/li[1]/h3/a");
@@ -47,8 +47,8 @@ public class Universal_Linking
 
         String originalWindowHandler = driver.browser().getWindowHandle();
 
-        By ThisPage_Link = By.linkText("this page");
-        driver.element().click(ThisPage_Link);
+        By Page_Link = By.linkText("this page");
+        driver.element().click(Page_Link);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -60,16 +60,14 @@ public class Universal_Linking
         Validations.assertThat().object((Object) actualURL_Refer).isEqualTo((Object) "https://www.waffarx.com/en-us/referral").perform();
     }
 
-        @Test(priority = 2)
-        public void Check_that_All_UniversalLinking_InPrivacyAndSecurity_WorkCorrectly()
+    @Test
+    public void B_Check_that_All_UniversalLinking_InPrivacyAndSecurity_WorkCorrectly()
         {
             Open_HelpPage();
-
             By PrivacyAndSecurity = By.xpath("//*[@id=\"heatmapArea\"]/main/div[2]/div/div[1]/ul/li[2]/h3/a");
             driver.element().clickUsingJavascript(PrivacyAndSecurity);
 
             String originalWindowHandler = driver.browser().getWindowHandle();
-
             By PrivacyAgreement_Link = By.linkText("Privacy Agreement.");
             driver.element().click(PrivacyAgreement_Link);
 
@@ -82,7 +80,6 @@ public class Universal_Linking
 
             String actualURL_PrivacyAgreement = driver.browser().getCurrentURL();
             Validations.assertThat().object((Object) actualURL_PrivacyAgreement).isEqualTo((Object) "https://www.waffarx.com/en-us/privacypolicy").perform();
-
             driver.getDriver().switchTo().window(originalWindowHandler);
 
             ///////////// link of Privacy policy //////////////////////
@@ -97,12 +94,11 @@ public class Universal_Linking
             }
             String actualURL_PrivacyPolicy = driver.browser().getCurrentURL();
             Validations.assertThat().object((Object) actualURL_PrivacyPolicy).isEqualTo((Object) "https://www.waffarx.com/en-us/privacypolicy").perform();
-
             driver.getDriver().switchTo().window(originalWindowHandler);
         }
 
-    @Test(priority = 3)
-    public void Check_that_All_UniversalLinking_InMyAccount_WorkCorrectly()
+    @Test
+    public void C_Check_that_All_UniversalLinking_InMyAccount_WorkCorrectly()
     {
         Open_HelpPage();
 
@@ -111,6 +107,7 @@ public class Universal_Linking
         String originalWindowHandler = driver.browser().getWindowHandle();
         //***************  link of EmailSubscription **************** //
         By EmailSubscription_Link = By.xpath("//*[@id=\"1029\"]/div/p[4]/a");
+        driver.element().scrollToElement(EmailSubscription_Link) ;
         driver.element().click(EmailSubscription_Link);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
@@ -125,7 +122,7 @@ public class Universal_Linking
         driver.getDriver().switchTo().window(originalWindowHandler);
 
         //*************** link of Shopping Trips **************** //
-        By ShoppingTrips_Link = By.xpath("//*[@id=\"1027\"]/div/p[3]/a");
+        By ShoppingTrips_Link = By.linkText("View My Shopping Trips");
         driver.element().click(ShoppingTrips_Link);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
@@ -193,8 +190,8 @@ public class Universal_Linking
         Validations.assertThat().object((Object) actualURL_contactUS2).isEqualTo((Object) "https://www.waffarx.com/en-us/help").perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_All_UniversalLinking_InMyCashOut_WorkCorrectly()
+    @Test
+    public void D_Check_that_All_UniversalLinking_InMyCashOut_WorkCorrectly()
     {
         Open_HelpPage();
 
@@ -225,8 +222,8 @@ public class Universal_Linking
         driver.element().verifyThat(Update_name2).isVisible().perform();
     }
 
-    @Test(priority = 5)
-    public void Check_that_All_UniversalLinking_In_EarningCashBack_WorkCorrectly()
+    @Test
+    public void E_Check_that_All_UniversalLinking_In_EarningCashBack_WorkCorrectly()
     {
         Open_HelpPage();
         //*************** link of CustomerService **************** //
