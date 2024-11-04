@@ -44,8 +44,8 @@ public class ContactUS
         Result = By.xpath("//*[@id=\"TrackCashBackResult\"]/p");
     }
 
-    @Test(priority = 1)
-    public void Check_that_TrackMyCashBack_WorkCorrectly()
+    @Test
+    public void A_Check_that_TrackMyCashBack_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -72,8 +72,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 2)
-    public void Check_that_InstoreCashBack_WorkCorrectly()
+    @Test
+    public void B_Check_that_InstoreCashBack_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -100,8 +100,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_TrackMyCashOut_WorkCorrectly()
+    @Test
+    public void C_Check_that_TrackMyCashOut_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -119,8 +119,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_TrackMyWelcomeBouns_WorkCorrectly()
+    @Test
+    public void D_Check_that_TrackMyWelcomeBouns_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -135,8 +135,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 5)
-    public void Check_that_ResetMyPassword_WorkCorrectly()
+    @Test
+    public void E_Check_that_ResetMyPassword_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -151,8 +151,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 6)
-    public void Check_that_EmailAddress_WorkCorrectly()
+    @Test
+    public void F_Check_that_EmailAddress_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -166,8 +166,8 @@ public class ContactUS
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
-    @Test(priority = 7)
-    public void Check_that_EmailPromotionsQuestions_WorkCorrectly  ()
+    @Test
+    public void G_Check_that_EmailPromotionsQuestions_WorkCorrectly  ()
     {
         Open_ContactUsPage();
 
@@ -181,8 +181,8 @@ public class ContactUS
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
-    @Test(priority = 8)
-    public void Check_that_WaffarXFeedback_WorkCorrectly()
+    @Test
+    public void H_Check_that_WaffarXFeedback_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -197,8 +197,8 @@ public class ContactUS
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
 
-    @Test(priority = 9)
-    public void Check_that_Store_Feedback_WorkCorrectly()
+    @Test
+    public void I_Check_that_Store_Feedback_WorkCorrectly()
     {
         Open_ContactUsPage();
 
@@ -233,8 +233,8 @@ public class ContactUS
 //        driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
 //    }
 
-    @Test(priority = 10)
-    public void Check_that_Blogger_WorkCorrectly()
+    @Test
+    public void J_Check_that_Blogger_WorkCorrectly()
     {
         Open_ContactUsPage();
 
