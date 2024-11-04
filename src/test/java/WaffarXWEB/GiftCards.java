@@ -38,7 +38,7 @@ public class GiftCards {
         By CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
         driver.element().clickUsingJavascript(CloseBrowser_extension);
 
-        By Amazon_GiftCards = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div[3]/div[2]/div/a/img");
+        By Amazon_GiftCards = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div[3]/div[2]/div[1]/a/img");
         driver.element().click(Amazon_GiftCards);
 
         driver.element().clickUsingJavascript(CloseBrowser_extension);
@@ -50,8 +50,8 @@ public class GiftCards {
         Error = By.id("numberInput-error") ;
     }
 
-    @Test(priority = 1)
-    public void CheckThat_WhenChoose_value_AllDataAppearCorrect() {
+    @Test
+    public void A_CheckThat_WhenChoose_value_AllDataAppearCorrect() {
         Open_GiftCards_Page();
         By choice_1000 = By.xpath("//*[@id=\"paygiftcard\"]/div[2]/a[7]");
         driver.element().scrollToElement(choice_1000);
@@ -62,8 +62,8 @@ public class GiftCards {
         driver.element().verifyThat(CardAmount).text().isEqualTo("1000").perform();
     }
 
-    @Test(priority = 2)
-    public void CheckThat_Plus_And_Minus_WorkCorrectly() {
+    @Test
+    public void B_CheckThat_Plus_And_Minus_WorkCorrectly() {
         Open_GiftCards_Page();
         By Plus_Button = By.xpath("//*[@id=\"plusBtn\"]/i") ;
         driver.element().scrollToElement(Plus_Button) ;
@@ -86,8 +86,8 @@ public class GiftCards {
         driver.element().verifyThat(CardAmount).text().isEqualTo("20").perform();
     }
 
-    @Test(priority = 3)
-    public void CheckThat_WhenInsert_value_AllDataAppearCorrect() {
+    @Test
+    public void C_CheckThat_WhenInsert_value_AllDataAppearCorrect() {
         Open_GiftCards_Page();
         driver.element().type(number , "5000") ;
         driver.element().keyPress(number , TAB) ;
@@ -96,24 +96,24 @@ public class GiftCards {
         driver.element().verifyThat(CardAmount).text().isEqualTo("5000").perform();
     }
 
-    @Test(priority = 4)
-    public void CheckThat_ErrorAppear_When_NumberLessThanMin() {
+    @Test
+    public void D_CheckThat_ErrorAppear_When_NumberLessThanMin() {
         Open_GiftCards_Page();
         driver.element().type(number , "0") ;
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(Error).text().isEqualTo("The amount must be between 1 and 6000").perform();
     }
 
-    @Test(priority = 5)
-    public void CheckThat_ErrorAppear_When_NumberGreaterThanMax() {
+    @Test
+    public void E_CheckThat_ErrorAppear_When_NumberGreaterThanMax() {
         Open_GiftCards_Page();
         driver.element().type(number , "7000") ;
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(Error).text().isEqualTo("The amount must be between 1 and 6000").perform();
     }
 
-    @Test(priority = 6)
-    public void CheckThat_Increase_AndDecrease_Arrow_WorkCorrect() {
+    @Test
+    public void F_CheckThat_Increase_AndDecrease_Arrow_WorkCorrect() {
         Open_GiftCards_Page();
 
         for (int i=0 ; i<=10 ; i++) {
