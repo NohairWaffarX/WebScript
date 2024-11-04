@@ -19,7 +19,7 @@ public class A_SignUP_Page
     private void clickRegisterButton()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button);
+        driver.element().waitToBeReady(Register_Button ,true);
         driver.element().clickUsingJavascript(Register_Button);
 
         FullName = By.id("RegisterFirstName");
@@ -33,69 +33,69 @@ public class A_SignUP_Page
         ConfirmPasswordError = By.id("RegisterConfirmPassword-error");
     }
 
-    private void waitFunction()
-    {
-        var elementIdentificationTimeout = SHAFT.Properties.timeouts.defaultElementIdentificationTimeout();
-        SHAFT.Properties.timeouts.set().defaultElementIdentificationTimeout(5);
-    }
-
     ///////////////////////////////   Test cases of Name /////////////////////////////////////////
-    @Test(priority = 1)
-    public void Check_that_ErrorAppear_whenNameIs_SymbolsANDChars()
+    @Test
+    public void A_Check_that_ErrorAppear_whenNameIs_SymbolsANDChars()
     {
-        clickRegisterButton() ;
+        clickRegisterButton();
+        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "@#$456");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name must be characters only").perform();
     }
 
-    @Test(priority = 2)
-    public void Check_that_ErrorAppear_whenName_isEmpty()
+    @Test
+    public void B_Check_that_ErrorAppear_whenName_isEmpty()
     {
         clickRegisterButton() ;
+        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, " ");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_Name_has_max_limitation_as_50char()
+    @Test
+    public void C_Check_that_Name_has_max_limitation_as_50char()
     {
         clickRegisterButton() ;
+        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");  //60Chars
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name maximum length is 50 character").perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_Name_has_min_limitation_as_3char()
+    @Test
+    public void D_Check_that_Name_has_min_limitation_as_3char()
     {
         clickRegisterButton() ;
+        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "AA");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
     }
 ///////////////////////////////   Test cases of Email /////////////////////////////////////////
-    @Test(priority = 5)
-    public void Check_that_ErrorAppear_whenEmail_isEmpty()
+    @Test
+    public void E_Check_that_ErrorAppear_whenEmail_isEmpty()
     {
         clickRegisterButton() ;
+        driver.element().waitToBeReady(Email ,true);
         driver.element().type(Email, " ");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
-    @Test(priority = 6)
-    public void Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
+    @Test
+    public void F_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickRegisterButton() ;
+        driver.element().waitToBeReady(Email ,true);
         driver.element().type(Email, "nohair");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
-    @Test(priority = 7)
-    public void Check_that_ErrorAppear_whenInsert_EmailAlreadyExist()
+    @Test
+    public void G_Check_that_ErrorAppear_whenInsert_EmailAlreadyExist()
     {
         clickRegisterButton() ;
         driver.element().type(FullName, "Nohair");
@@ -107,8 +107,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(Error).isVisible().perform();
     }
     ///////////////////////////////   Test cases of Password /////////////////////////////////////////
-    @Test(priority = 8)
-    public void Check_that_ErrorAppear_whenPasswordANDConfirmPassword_areEmpty()
+    @Test
+    public void H_Check_that_ErrorAppear_whenPasswordANDConfirmPassword_areEmpty()
     {
         clickRegisterButton() ;
         driver.element().type(Password, " ");
@@ -118,8 +118,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(ConfirmPasswordError).text().isEqualTo("Confirm Password must be at least 8 characters").perform();
     }
 
-    @Test(priority = 9)
-    public void Check_that_ErrorAppear_whenPasswordANDConfirmPassword_NotMatch()
+    @Test
+    public void I_Check_that_ErrorAppear_whenPasswordANDConfirmPassword_NotMatch()
     {
         clickRegisterButton() ;
         driver.element().type(Password, "Qw222222");
@@ -128,8 +128,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(ConfirmPasswordError).text().isEqualTo("The new password and confirm password do not match.").perform();
     }
 
-    @Test(priority = 10)
-    public void Check_that_ErrorAppear_whenPassword_less_than_8chars()   //password less than 8 chars
+    @Test
+    public void J_Check_that_ErrorAppear_whenPassword_less_than_8chars()   //password less than 8 chars
     {
         clickRegisterButton() ;
         driver.element().type(Password, "Qw22222");
@@ -138,8 +138,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
 
-    @Test(priority = 11)
-    public void Check_that_ErrorAppear_whenPassword_Greater_than_20chars()   //password greater than 20 chars
+    @Test
+    public void K_Check_that_ErrorAppear_whenPassword_Greater_than_20chars()   //password greater than 20 chars
     {
         clickRegisterButton() ;
         driver.element().type(Password, "Qw2222222222222222222");  //21 chars
@@ -148,8 +148,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
 
-    @Test(priority = 12)
-    public void Check_that_ErrorAppear_whenPassword_notContain_small_letter()   //password don't contain small letter
+    @Test
+    public void L_Check_that_ErrorAppear_whenPassword_notContain_small_letter()   //password don't contain small letter
     {
         clickRegisterButton() ;
         driver.element().type(Password, "QQ222222");
@@ -158,8 +158,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
 
-    @Test(priority = 13)
-    public void Check_that_ErrorAppear_whenPassword_notContain_Capital_letter()   //password don't contain Big letter
+    @Test
+    public void M_Check_that_ErrorAppear_whenPassword_notContain_Capital_letter()   //password don't contain Big letter
     {
         clickRegisterButton() ;
         driver.element().type(Password, "qq222222");
@@ -168,8 +168,8 @@ public class A_SignUP_Page
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
 
-    @Test(priority = 14)
-    public void Check_that_ErrorAppear_whenPassword_notContain_Number()   //password don't contain Number
+    @Test
+    public void N_Check_that_ErrorAppear_whenPassword_notContain_Number()   //password don't contain Number
     {
         clickRegisterButton() ;
         driver.element().type(Password, "QQwwwwww");
@@ -185,8 +185,8 @@ public class A_SignUP_Page
         return randomUsername + "@" + domain;
     }
 
-    @Test(priority = 15)
-    public void Check_that_SignUp_workCorrectly()
+    @Test
+    public void O_Check_that_SignUp_workCorrectly()
     {
         clickRegisterButton() ;
         getRandomEmail() ;
