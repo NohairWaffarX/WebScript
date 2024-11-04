@@ -36,8 +36,8 @@ public class C_Search
         Search_Button = By.className("search-button") ;
     }
 
-    @Test(priority = 1)
-    public void Check_that_ResultCorrect_when_SearchWithDataNotFound()
+    @Test
+    public void A_Check_that_ResultCorrect_when_SearchWithDataNotFound()
     {
         Login() ;
         driver.element().type(Search_text, "dfjkjdfkdjk" ) ;
@@ -46,8 +46,8 @@ public class C_Search
         driver.element().verifyThat(Search_Result).isVisible().perform();
     }
 
-    @Test(priority = 2)
-    public void Check_that_ResultCorrect_when_SearchWith_Amazon()
+    @Test
+    public void B_Check_that_ResultCorrect_when_SearchWith_Amazon()
     {
         Login() ;
         driver.element().type(Search_text, "amazon" ) ;
@@ -58,8 +58,8 @@ public class C_Search
         driver.element().verifyThat(Hatolna_ShoppingStore).isVisible().perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_ResultCorrect_when_SearchWith_2B()
+    @Test
+    public void C_Check_that_ResultCorrect_when_SearchWith_2B()
     {
         Login() ;
         driver.element().type(Search_text, "2b" ) ;
@@ -68,8 +68,8 @@ public class C_Search
         driver.element().verifyThat(store_2b).isVisible().perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_ResultCorrect_when_SearchWith_jum()
+    @Test
+    public void D_Check_that_ResultCorrect_when_SearchWith_jum()
     {
         Login();
         driver.element().type(Search_text, "jum" ) ;
@@ -78,8 +78,8 @@ public class C_Search
         driver.element().verifyThat(store_jumia).isVisible().perform();
     }
 
-    @Test(priority = 5)
-    public void Check_that_ResultCorrect_when_SearchWith_TheHut()
+    @Test
+    public void E_Check_that_ResultCorrect_when_SearchWith_TheHut()
     {
         Login();
         driver.element().type(Search_text, "the hut" ) ;
@@ -88,8 +88,8 @@ public class C_Search
         driver.element().verifyThat(store_TheHut).isVisible().perform();
     }
 
-    @Test(priority = 6)
-    public void Check_that_ResultCorrect_when_SearchWith_BTech()
+    @Test
+    public void F_Check_that_ResultCorrect_when_SearchWith_BTech()
     {
         Login();
         driver.element().type(Search_text, "b.tech" ) ;
