@@ -41,8 +41,8 @@ public class E_Refer_andEarn
         Error = By.className("text-muted") ;
     }
 
-    @Test(priority = 1)
-    public void Check_that_ErrorAppear_whenEmail_IsEmpty()
+    @Test
+    public void A_Check_that_ErrorAppear_whenEmail_IsEmpty()
     {
         Open_Refer_Page() ;
         driver.element().type(UserEmail, " ");
@@ -50,8 +50,8 @@ public class E_Refer_andEarn
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
-    @Test(priority = 2)
-    public void Check_that_ErrorAppear_WhenInsert_WrongFormat_InEmail()
+    @Test
+    public void B_Check_that_ErrorAppear_WhenInsert_WrongFormat_InEmail()
     {
         Open_Refer_Page() ;
         driver.element().type(UserEmail, "jkjkdj");
@@ -59,8 +59,8 @@ public class E_Refer_andEarn
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_ErrorAppear_WhenRefer_yourself()
+    @Test
+    public void C_Check_that_ErrorAppear_WhenRefer_yourself()
     {
         Open_Refer_Page() ;
         driver.element().type(UserEmail, "gnohair@gmail.com");
@@ -68,8 +68,8 @@ public class E_Refer_andEarn
         driver.element().verifyThat(Error).text().isEqualTo("You cannot refer yourself.").perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_ErrorAppear_WhenRefer_Mail_already_InWaffarX()
+    @Test
+    public void D_Check_that_ErrorAppear_WhenRefer_Mail_already_InWaffarX()
     {
         Open_Refer_Page() ;
         driver.element().type(UserEmail, "mg55851@gmail.com");
@@ -77,8 +77,8 @@ public class E_Refer_andEarn
         driver.element().verifyThat(Error).text().isEqualTo("This email is already registered.").perform();
     }
 
-    @Test(priority = 5)
-    public void Check_that_ErrorAppear_WhenMail_already_referred()
+    @Test
+    public void D_Check_that_ErrorAppear_WhenMail_already_referred()
     {
         Open_Refer_Page() ;
         driver.element().type(UserEmail, "j23134263@gmail.com");
