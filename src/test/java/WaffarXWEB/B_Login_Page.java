@@ -18,8 +18,8 @@ public class B_Login_Page
     private void clickAlreadyMemberButton()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a") ;
         driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
@@ -29,18 +29,18 @@ public class B_Login_Page
         SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
     }
 
-    @Test(priority = 1)
-    public void Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword()
+    @Test
+    public void A_Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword()
     {
         clickAlreadyMemberButton() ;
         driver.element().type(Email, "gnohairrr@gmail.com");
         driver.element().type(Password, "Ng555555");
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
-        }
+    }
 
-    @Test(priority = 2)
-    public void Check_that_ErrorAppear_whenInsert_CorrectEmail_and_WrongPassword()
+    @Test
+    public void B_Check_that_ErrorAppear_whenInsert_CorrectEmail_and_WrongPassword()
     {
         clickAlreadyMemberButton() ;
         driver.element().type(Email, "gnohair@gmail.com");
@@ -49,8 +49,8 @@ public class B_Login_Page
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
     }
 
-    @Test(priority = 3)
-    public void Check_that_Login_workCorrectly()
+    @Test
+    public void C_Check_that_Login_workCorrectly()
     {
         clickAlreadyMemberButton() ;
         driver.element().type(Email, "gnohair@gmail.com");
@@ -61,8 +61,8 @@ public class B_Login_Page
         driver.element().verifyThat(Search_text).isVisible().perform();
     }
 
-    @Test(priority = 4)
-    public void Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
+    @Test
+    public void D_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickAlreadyMemberButton() ;
         driver.element().type(Email, "gnohair@");
