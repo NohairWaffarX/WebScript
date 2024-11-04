@@ -37,7 +37,7 @@ public class Z_ForgetPassword
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void A_Email_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button() ;
@@ -46,7 +46,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
-    @Test(priority = 2)
+    @Test
     public void B_Email_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickForgetPassword_Button() ;
@@ -56,7 +56,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
-    @Test(priority = 3)
+    @Test
     public void C_Email_Check_that_ErrorAppear_when_InsertEmail_notFound_inWaffarX()
     {
         clickForgetPassword_Button() ;
@@ -66,7 +66,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(EmailError).text().isEqualTo("This email is not registered at WaffarX.").perform();
     }
 
-    @Test(priority = 4)
+    @Test
     public void D_Email_Check_that_System_TerminateSpaces()
     {
         clickForgetPassword_Button() ;
@@ -77,7 +77,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(Register_Button).isVisible().perform(); ;
     }
 
-    @Test(priority = 5)
+    @Test
     public void E_Mobile_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button();
@@ -86,7 +86,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(MobileError).text().isEqualTo("This field is required.").perform();
     }
 
-    @Test(priority = 6)
+    @Test
     public void F_Mobile_Check_that_ErrorAppear_when_insert_LessThan_MinLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
@@ -95,7 +95,7 @@ public class Z_ForgetPassword
         driver.element().click(SendOTP_Button);
         driver.element().verifyThat(MobileError).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
-    @Test(priority = 7)
+    @Test
     public void G_Mobile_Check_that_ErrorAppear_when_insert_GreaterThan_MaxLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
@@ -105,7 +105,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(MobileError).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
     }
 
-    @Test(priority = 8)
+    @Test
     public void H_Mobile_Check_that_ErrorAppear_when_insertNumber_NotJoin_inWaffarX()
     {
         clickForgetPassword_Button() ;
@@ -116,7 +116,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number not verified at waffarx!").perform();
     }
 
-    @Test(priority = 9)
+    @Test
     public void I_Mobile_Check_that_OTP_sendCorrectlyWhen_insertCorrectNumber()
     {
         clickForgetPassword_Button() ;
@@ -127,7 +127,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(Hint).isVisible().perform();
     }
 
-    @Test(priority = 10)
+    @Test
     public void J_Mobile_OTPWindow_Check_that_ErrorAppear_without_insert_code()
     {
         clickForgetPassword_Button() ;
@@ -140,7 +140,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure the reset password code is correct.").perform();
     }
 
-    @Test(priority = 11)
+    @Test
     public void K_Mobile_OTPWindow_Check_that_ErrorAppear_when_insert_WrongCode()
     {
         clickForgetPassword_Button() ;
@@ -169,7 +169,7 @@ public class Z_ForgetPassword
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure the reset password code is correct.").perform();
     }
 
-    @Test(priority = 12)
+    @Test
     public void L_ForgetPassword_exceed3times() throws InterruptedException {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
