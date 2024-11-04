@@ -13,17 +13,17 @@ public class D_AccountSettings
     public void setupBrowser()
     {
         driver = new SHAFT.GUI.WebDriver(); // to open browser
-        driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
+        driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
 
     private void OpenAccountSettings_Page()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a") ;
-        driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
+        driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
         driver.element().type(Email, "gnohair@gmail.com");
@@ -34,7 +34,7 @@ public class D_AccountSettings
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
-        By userinfo = By.xpath("//*[@id=\"fixedHeader\"]/div[3]/div/div[2]/div[3]/div/i") ;
+        By userinfo = By.className("fa-chevron-down") ;
         driver.element().hover(userinfo);
 
         By AccountSettings_choice= By.linkText("Account Settings") ;
@@ -48,8 +48,8 @@ public class D_AccountSettings
         SecondName_Error= By.id("UserLastNames-error");
     }
 
-    @Test(priority = 1)
-    public void UpdateName_Check_that_ErrorAppear_whenFields_AreEmpty()
+    @Test
+    public void A_UpdateName_Check_that_ErrorAppear_whenFields_AreEmpty()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -58,8 +58,8 @@ public class D_AccountSettings
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("This field is required.").perform();
     }
 
-    @Test(priority = 2)
-    public void UpdateName_Check_that_ErrorAppear_whenInsert_SymbolsAndSymbols_inNameFields()
+    @Test
+    public void B_UpdateName_Check_that_ErrorAppear_whenInsert_SymbolsAndSymbols_inNameFields()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -70,8 +70,8 @@ public class D_AccountSettings
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Sorry, Numbers and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
 
-    @Test(priority = 3)
-    public void UpdateName_Check_that_ErrorAppear_whenInsert_lessThanMin_inNameFields()
+    @Test
+    public void C_UpdateName_Check_that_ErrorAppear_whenInsert_lessThanMin_inNameFields()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -82,8 +82,8 @@ public class D_AccountSettings
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name minimum length is 3 character").perform();
     }
 
-    @Test(priority = 4)
-    public void UpdateName_Check_that_ErrorAppear_whenInsert_GreaterThanMax_inNameFields()
+    @Test
+    public void D_UpdateName_Check_that_ErrorAppear_whenInsert_GreaterThanMax_inNameFields()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -94,8 +94,8 @@ public class D_AccountSettings
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name maximum length is 50 character").perform();
     }
 
-    @Test(priority = 5)
-    public void UpdateName_Check_that_ErrorAppear_when_Not_DeclareData()
+    @Test
+    public void E_UpdateName_Check_that_ErrorAppear_when_Not_DeclareData()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -106,8 +106,8 @@ public class D_AccountSettings
         driver.element().verifyThat(declare_Error).text().isEqualTo("You must declare that all information provided is true.").perform();
     }
 
-    @Test(priority = 6)
-    public void Check_that_UpdateName_WorkCorrectly()
+    @Test
+    public void F_Check_that_UpdateName_WorkCorrectly()
     {
         OpenAccountSettings_Page() ;
         driver.element().click(Update_name);
@@ -122,8 +122,8 @@ public class D_AccountSettings
         driver.element().verifyThat(message).text().isEqualTo(" Data Saved").perform();
     }
 
-    @Test(priority = 7)
-    public void Check_that_UpdateGender_WorkCorrectly()
+    @Test
+    public void G_Check_that_UpdateGender_WorkCorrectly()
     {
         OpenAccountSettings_Page() ;
 
@@ -149,8 +149,8 @@ public class D_AccountSettings
         driver.element().click(save2) ;
     }
 
-    @Test(priority = 8)
-    public void Check_that_UpdateDate_of_Birth_WorkCorrectly ()
+    @Test
+    public void H_Check_that_UpdateDate_of_Birth_WorkCorrectly ()
     {
         OpenAccountSettings_Page() ;
 
