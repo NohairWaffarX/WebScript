@@ -34,7 +34,7 @@ public class D_AccountSettings
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
-        By userinfo = By.className("fa-chevron-down") ;
+        By userinfo = By.xpath("//*[@id=\"fixedHeader\"]/div[3]/div/div[2]/div[3]/div/i") ;
         driver.element().hover(userinfo);
 
         By AccountSettings_choice= By.linkText("Account Settings") ;
