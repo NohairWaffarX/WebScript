@@ -18,11 +18,11 @@ public class E_Refer_andEarn
     private void Open_Refer_Page()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a") ;
-        driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
+        driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
         driver.element().type(Email, "gnohair@gmail.com");
