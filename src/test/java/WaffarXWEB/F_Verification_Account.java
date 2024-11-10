@@ -42,7 +42,7 @@ public class F_Verification_Account
     }
 
     @Test
-    public void A_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
+    public void AA_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
     {
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "01277249225");
