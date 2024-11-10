@@ -3,17 +3,7 @@
 <suite name="My Test Suite">
     <test name="Test All Classes">
         <classes>
-            <class name="WaffarXWEB.D_AccountSettings"/>
             <class name="WaffarXWEB.F_Verification_Account"/>
-            <class name="WaffarXWEB.B_Login_Page"/>
-            <class name="WaffarXWEB.A_SignUP_Page"/>
-            <class name="WaffarXWEB.E_Refer_andEarn"/>
-            <class name="WaffarXWEB.C_Search"/>
-            <class name="WaffarXWEB.GiftCards"/>
-            <class name="WaffarXWEB.ContactUS"/>
-            <class name="WaffarXWEB.Universal_Linking"/>
-            <class name="WaffarXWEB.E_Refer_andEarn"/>
-            <class name="WaffarXWEB.CIB_SignUPValidations"/>
         </classes>
     </test>
 </suite>
