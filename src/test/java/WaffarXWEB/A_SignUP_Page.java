@@ -38,7 +38,6 @@ public class A_SignUP_Page
     public void A_Check_that_ErrorAppear_whenNameIs_SymbolsANDChars()
     {
         clickRegisterButton();
-        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "@#$456");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name must be characters only").perform();
@@ -48,7 +47,6 @@ public class A_SignUP_Page
     public void B_Check_that_ErrorAppear_whenName_isEmpty()
     {
         clickRegisterButton() ;
-        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, " ");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
@@ -58,7 +56,6 @@ public class A_SignUP_Page
     public void C_Check_that_Name_has_max_limitation_as_50char()
     {
         clickRegisterButton() ;
-        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");  //60Chars
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name maximum length is 50 character").perform();
@@ -68,7 +65,6 @@ public class A_SignUP_Page
     public void D_Check_that_Name_has_min_limitation_as_3char()
     {
         clickRegisterButton() ;
-        driver.element().waitToBeReady(FullName ,true);
         driver.element().type(FullName, "AA");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
@@ -78,7 +74,6 @@ public class A_SignUP_Page
     public void E_Check_that_ErrorAppear_whenEmail_isEmpty()
     {
         clickRegisterButton() ;
-        driver.element().waitToBeReady(Email ,true);
         driver.element().type(Email, " ");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
@@ -88,7 +83,6 @@ public class A_SignUP_Page
     public void F_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickRegisterButton() ;
-        driver.element().waitToBeReady(Email ,true);
         driver.element().type(Email, "nohair");
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
