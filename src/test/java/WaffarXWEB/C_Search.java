@@ -12,17 +12,17 @@ public class C_Search
     public void setupBrowser()
     {
         driver = new SHAFT.GUI.WebDriver(); // to open browser
-        driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
+        driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
 
     private void Login()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a") ;
-        driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
+        driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
         driver.element().type(Email, "gnohair@gmail.com");
