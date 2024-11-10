@@ -19,11 +19,11 @@ public class F_Verification_Account
     private void Open_PopupOF_VerifyAccount()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a") ;
-        driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
+        driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
         driver.element().type(Email, "gnohair@gmail.com");
@@ -45,7 +45,7 @@ public class F_Verification_Account
     public void A_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
     {
         Open_PopupOF_VerifyAccount() ;
-        driver.element().type(PhoneNumber_Field, "01277249447");
+        driver.element().type(PhoneNumber_Field, "01277249225");
         driver.element().click(SendCode_Button);
         By Error= By.className("ExistedMobNumber") ;
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
@@ -94,7 +94,7 @@ public class F_Verification_Account
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
 
-    @Test(dependsOnMethods = { "Verify_Account_exceed3times" })
+    @Test(dependsOnMethods = { "D_Verify_Account_exceed3times" })
     public void E_Check_that_ErrorAppear_whenInsert_WrongVerificationCode() {
         Open_PopupOF_VerifyAccount();
 
