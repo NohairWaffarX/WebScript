@@ -61,14 +61,14 @@ public class F_Verification_Account
         driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
 
-    // @Test
-    // public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
-    // {
-    //     Open_PopupOF_VerifyAccount() ;
-    //     driver.element().type(PhoneNumber_Field, "0127724999999999888");
-    //     driver.element().click(SendCode_Button);
-    //     By Error= By.id("WrongEgMobNumber");
-    //     driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
+    @Test
+    public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
+    {
+        Open_PopupOF_VerifyAccount() ;
+        driver.element().type(PhoneNumber_Field, "0127724999999999888");
+        driver.element().click(SendCode_Button);
+        By Error= By.id("WrongEgMobNumber");
+        driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
 
     // }
     // @Test
