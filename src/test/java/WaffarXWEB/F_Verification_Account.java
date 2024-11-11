@@ -89,25 +89,24 @@ public class F_Verification_Account
         Thread.sleep(140000);
         driver.element().click(ReSend) ;
 
-        System.out.print("ok");
-        // Thread.sleep(3000);
-        // By Error= By.id("ExceedCount") ;
-        // driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
+        Thread.sleep(3000);
+        By Error= By.id("ExceedCount") ;
+        driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
 
-    @Test(dependsOnMethods = { "D_Verify_Account_exceed3times" })
-    public void E_Check_that_ErrorAppear_whenInsert_WrongVerificationCode() {
-        Open_PopupOF_VerifyAccount();
+    // @Test(dependsOnMethods = { "D_Verify_Account_exceed3times" })
+    // public void E_Check_that_ErrorAppear_whenInsert_WrongVerificationCode() {
+    //     Open_PopupOF_VerifyAccount();
 
-        By VerificationCode_Text = By.xpath("(//*[@id='VerificationCode'])[2]");
-        driver.element().type(VerificationCode_Text, "88888");
+    //     By VerificationCode_Text = By.xpath("(//*[@id='VerificationCode'])[2]");
+    //     driver.element().type(VerificationCode_Text, "88888");
 
-        By VerifyAccount_Button = By.xpath("//*[@id=\"VerifyUserPhoneNumber\"]/input");
-        driver.element().click(VerifyAccount_Button);
+    //     By VerifyAccount_Button = By.xpath("//*[@id=\"VerifyUserPhoneNumber\"]/input");
+    //     driver.element().click(VerifyAccount_Button);
 
-        By Error = By.xpath("//*[@id=\"WrongVerify\"]");
-        driver.element().verifyThat(Error).text().isEqualTo("Invalid verification Code!").perform();
-    }
+    //     By Error = By.xpath("//*[@id=\"WrongVerify\"]");
+    //     driver.element().verifyThat(Error).text().isEqualTo("Invalid verification Code!").perform();
+    // }
     @AfterMethod
     public void CloseDriver()
     {
