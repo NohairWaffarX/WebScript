@@ -89,6 +89,7 @@ public class F_Verification_Account
         Thread.sleep(140000);
         driver.element().click(ReSend) ;
 
+        Thread.sleep(3000);
         By Error= By.id("ExceedCount") ;
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
