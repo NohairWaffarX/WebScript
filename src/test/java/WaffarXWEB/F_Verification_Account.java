@@ -51,15 +51,15 @@ public class F_Verification_Account
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
     }
 
-    // @Test
-    // public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
-    // {
-    //     Open_PopupOF_VerifyAccount() ;
-    //     driver.element().type(PhoneNumber_Field, "012");
-    //     driver.element().click(SendCode_Button);
-    //     By Error= By.id("phone-error");
-    //     driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
-    // }
+    @Test
+    public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
+    {
+        Open_PopupOF_VerifyAccount() ;
+        driver.element().type(PhoneNumber_Field, "012");
+        driver.element().click(SendCode_Button);
+        By Error= By.id("phone-error");
+        driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
+    }
 
     // @Test
     // public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
