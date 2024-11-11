@@ -70,7 +70,7 @@ public class F_Verification_Account
         By Error= By.id("WrongEgMobNumber");
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
 
-    // }
+    }
     // @Test
     // public void D_Verify_Account_exceed3times() throws InterruptedException {
     //     Open_PopupOF_VerifyAccount() ;
