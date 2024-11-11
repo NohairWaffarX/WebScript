@@ -78,16 +78,16 @@ public class F_Verification_Account
         driver.element().click(SendCode_Button);
 
         By ReSend = By.id("ReSendCode");
-        Thread.sleep(70000);
+        Thread.sleep(140000);
         driver.element().click(ReSend);
 
-        Thread.sleep(100000);
+        Thread.sleep(140000);
         driver.element().click(ReSend) ;
 
-        Thread.sleep(100000);
+        Thread.sleep(140000);
         driver.element().click(ReSend) ;
 
-        Thread.sleep(100000);
+        Thread.sleep(140000);
         driver.element().click(ReSend) ;
 
         By Error= By.id("ExceedCount") ;
