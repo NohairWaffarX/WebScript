@@ -36,14 +36,15 @@ public class F_Verification_Account
         By Verify_Account_Button = By.xpath("//*[@id=\"verify-Banner\"]/p/button") ;
         driver.element().clickUsingJavascript(Verify_Account_Button) ;
 
-        PhoneNumber_Field = By.id("phone");
-        SendCode_Button = By.id("SendCode");
+        // PhoneNumber_Field = By.id("phone");
+        // SendCode_Button = By.id("SendCode");
     }
 
     @Test
     public void AA_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
     {
         PhoneNumber_Field = By.id("phone");
+        SendCode_Button = By.id("SendCode");
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "01277249225");
         driver.element().click(SendCode_Button);
@@ -55,6 +56,7 @@ public class F_Verification_Account
     public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
     {
         PhoneNumber_Field = By.id("phone");
+        SendCode_Button = By.id("SendCode");
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "012");
         driver.element().click(SendCode_Button);
@@ -66,6 +68,7 @@ public class F_Verification_Account
     public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
     {
         PhoneNumber_Field = By.id("phone");
+        SendCode_Button = By.id("SendCode");
         Open_PopupOF_VerifyAccount() ;
         driver.element().type(PhoneNumber_Field, "0127724999999999888");
         driver.element().click(SendCode_Button);
