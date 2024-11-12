@@ -7,7 +7,7 @@ import static org.openqa.selenium.Keys.ENTER;
 public class F_Verification_Account
 {
     SHAFT.GUI.WebDriver driver;
-    By PhoneNumber_Field , SendCode_Button ;
+    By SendCode_Button ;
     @BeforeMethod
     public void setupBrowser()
     {
@@ -77,7 +77,7 @@ public class F_Verification_Account
     @Test
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
-        PhoneNumber_Field = By.id("phone");
+        By PhoneNumber_Field = By.id("phone");
         Thread.sleep(5000);
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);  // After click on it , First otp send
