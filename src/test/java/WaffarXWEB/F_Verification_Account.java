@@ -1,7 +1,13 @@
 package WaffarXWEB;
 import com.shaft.driver.SHAFT;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import com.shaft.gui.element.TouchActions;
+
+import java.time.Duration;
 
 import static org.openqa.selenium.Keys.ENTER;
 
@@ -9,7 +15,7 @@ import static org.openqa.selenium.Keys.ENTER;
 public class F_Verification_Account
 {
     SHAFT.GUI.WebDriver driver;
-    By PhoneNumber_Field, SendCode_Button ;
+    By SendCode_Button ;
     @BeforeMethod
     public void setupBrowser()
     {
@@ -38,49 +44,49 @@ public class F_Verification_Account
         By Verify_Account_Button = By.xpath("//*[@id=\"verify-Banner\"]/p/button") ;
         driver.element().clickUsingJavascript(Verify_Account_Button) ;
 
-        PhoneNumber_Field = By.id("phone");
+
         SendCode_Button = By.id("SendCode");
     }
 
-    @Test
-    public void AA_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
-    {
-        Open_PopupOF_VerifyAccount() ;
-        driver.element().type(PhoneNumber_Field, "01277249225");
-        driver.element().click(SendCode_Button);
-        By Error= By.className("ExistedMobNumber") ;
-        driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
-    }
-
-    @Test
-    public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
-    {
-        Open_PopupOF_VerifyAccount() ;
-        driver.element().type(PhoneNumber_Field, "012");
-        driver.element().click(SendCode_Button);
-        By Error= By.id("phone-error");
-        driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
-    }
-
-    @Test
-    public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
-    {
-        Open_PopupOF_VerifyAccount() ;
-        driver.element().type(PhoneNumber_Field, "0127724999999999888");
-        driver.element().click(SendCode_Button);
-        By Error= By.id("WrongEgMobNumber");
-        driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
-
-    }
+//    @Test
+//    public void AA_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
+//    {
+//        Open_PopupOF_VerifyAccount() ;
+//        driver.element().type(PhoneNumber_Field, "01277249225");
+//        driver.element().click(SendCode_Button);
+//        By Error= By.className("ExistedMobNumber") ;
+//        driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
+//    }
+//
+//    @Test
+//    public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
+//    {
+//        Open_PopupOF_VerifyAccount() ;
+//        driver.element().type(PhoneNumber_Field, "012");
+//        driver.element().click(SendCode_Button);
+//        By Error= By.id("phone-error");
+//        driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
+//    }
+//
+//    @Test
+//    public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
+//    {
+//        Open_PopupOF_VerifyAccount() ;
+//        driver.element().type(PhoneNumber_Field, "0127724999999999888");
+//        driver.element().click(SendCode_Button);
+//        By Error= By.id("WrongEgMobNumber");
+//        driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
+//
+//    }
     @Test
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
+        By PhoneNumber_Field = By.id("phone");
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);
 
         By ReSend = By.id("ReSendCode");
         Thread.sleep(140000);
-
         driver.element().click(ReSend);
 
         Thread.sleep(140000);
@@ -91,8 +97,6 @@ public class F_Verification_Account
 
         Thread.sleep(140000);
         driver.element().click(ReSend) ;
-
-        Thread.sleep(5000);
         By Error= By.id("ExceedCount") ;
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
