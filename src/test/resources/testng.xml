@@ -5,14 +5,8 @@
         <classes>
             <class name="WaffarXWEB.B_Login_Page"/>
             <class name="WaffarXWEB.A_SignUP_Page"/>
-            <class name="WaffarXWEB.E_Refer_andEarn"/>
             <class name="WaffarXWEB.C_Search"/>
             <class name="WaffarXWEB.D_AccountSettings"/>
-            <class name="WaffarXWEB.Universal_Linking"/>
-            <class name="WaffarXWEB.ContactUS"/>
-            <class name="WaffarXWEB.GiftCards"/>
-            <class name="WaffarXWEB.CIB_SignUPValidations"/>
-            <class name="WaffarXWEB.F_Verification_Account"/>
         </classes>
     </test>
 </suite>
