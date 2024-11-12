@@ -36,7 +36,6 @@ public class F_Verification_Account
         By Verify_Account_Button = By.xpath("//*[@id=\"verify-Banner\"]/p/button") ;
         driver.element().clickUsingJavascript(Verify_Account_Button) ;
 
-        PhoneNumber_Field = By.id("phone");
         SendCode_Button = By.id("SendCode");
     }
 
@@ -78,6 +77,7 @@ public class F_Verification_Account
     @Test
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
+        PhoneNumber_Field = By.id("phone");
         Thread.sleep(5000);
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);  // After click on it , First otp send
