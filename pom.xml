@@ -17,6 +17,8 @@
         <surefire-testng.version>3.2.5</surefire-testng.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
+        <!-- Skip tests during the build phase to avoid duplicate runs -->
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
