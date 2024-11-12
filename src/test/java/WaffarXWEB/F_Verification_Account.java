@@ -36,8 +36,8 @@ public class F_Verification_Account
         By Verify_Account_Button = By.xpath("//*[@id=\"verify-Banner\"]/p/button") ;
         driver.element().clickUsingJavascript(Verify_Account_Button) ;
 
-        // PhoneNumber_Field = By.id("phone");
-        // SendCode_Button = By.id("SendCode");
+        PhoneNumber_Field = By.id("phone");
+        SendCode_Button = By.id("SendCode");
     }
 
     // @Test
@@ -79,7 +79,6 @@ public class F_Verification_Account
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
         Thread.sleep(5000);
-        PhoneNumber_Field = By.id("phone");
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);  // After click on it , First otp send
 
@@ -93,8 +92,8 @@ public class F_Verification_Account
         Thread.sleep(140000);
         driver.element().click(ReSend) ;// After click on it , Error Message appear
 
-        // By Error= By.id("ExceedCount") ;
-        // driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
+        By Error= By.id("ExceedCount") ;
+        driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
     }
 
     // @Test(dependsOnMethods = { "D_Verify_Account_exceed3times" })
