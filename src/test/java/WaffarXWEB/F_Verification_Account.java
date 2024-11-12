@@ -94,6 +94,7 @@ public class F_Verification_Account
 
         By Error= By.id("ExceedCount") ;
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
+        Thread.sleep(5000);
     }
 
     // @Test(dependsOnMethods = { "D_Verify_Account_exceed3times" })
