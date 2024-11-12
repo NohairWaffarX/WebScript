@@ -81,7 +81,9 @@ public class F_Verification_Account
     @Test
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
+        Thread.sleep(5000);
         By PhoneNumber_Field = By.id("phone");
+        Thread.sleep(5000);
         driver.element().type(PhoneNumber_Field, "01067802082");
         driver.element().click(SendCode_Button);
 
