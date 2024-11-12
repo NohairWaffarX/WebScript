@@ -10,7 +10,6 @@
             <class name="WaffarXWEB.D_AccountSettings"/>
             <class name="WaffarXWEB.Universal_Linking"/>
             <class name="WaffarXWEB.ContactUS"/>
-            <class name="WaffarXWEB.Z_ForgetPassword"/>
             <class name="WaffarXWEB.GiftCards"/>
             <class name="WaffarXWEB.CIB_SignUPValidations"/>
             <class name="WaffarXWEB.F_Verification_Account"/>
