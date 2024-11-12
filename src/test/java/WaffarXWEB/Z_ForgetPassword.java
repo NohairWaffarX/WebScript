@@ -34,7 +34,6 @@ public class Z_ForgetPassword
         SendOTP_Button = By.id("SendCodeFP") ;
         Phone = By.id("UserMobileNumber") ;
         MobileError = By.id("UserMobileNumber-error") ;
-
     }
 
     @Test
@@ -102,7 +101,8 @@ public class Z_ForgetPassword
         driver.element().click(ForgetPasswordMobile);
         driver.element().type(Phone , "010782378237823723873");
         driver.element().click(SendOTP_Button);
-        driver.element().verifyThat(MobileError).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
+        By Error = By.id("FPWrongEgMobNumber") ;
+        driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
     }
 
     @Test
@@ -121,7 +121,7 @@ public class Z_ForgetPassword
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
-        driver.element().type(Phone , "01277249447");
+        driver.element().type(Phone , "01277249225");
         driver.element().click(SendOTP_Button);
         By Hint = By.id("CodeSentOn") ;
         driver.element().verifyThat(Hint).isVisible().perform();
@@ -132,7 +132,7 @@ public class Z_ForgetPassword
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
-        driver.element().type(Phone , "01277249447");
+        driver.element().type(Phone , "01277249225");
         driver.element().click(SendOTP_Button);
         By Verify_Button = By.id("VerifyFPCode") ;
         driver.element().click(Verify_Button);
@@ -145,7 +145,7 @@ public class Z_ForgetPassword
     {
         clickForgetPassword_Button() ;
         driver.element().click(ForgetPasswordMobile);
-        driver.element().type(Phone , "01277249447");
+        driver.element().type(Phone , "01277249225");
         driver.element().click(SendOTP_Button);
 
         By OTP1 = By.id("digitA") ;
@@ -175,23 +175,20 @@ public class Z_ForgetPassword
         driver.element().click(ForgetPasswordMobile);
 
         By PhoneNumber_Field = By.id("UserMobileNumber");
-        driver.element().type(PhoneNumber_Field, "01277249447");
+        driver.element().type(PhoneNumber_Field, "01277249225");
 
         By SendCode_Button = By.id("SendCodeFP");
-        driver.element().click(SendCode_Button);
+        driver.element().click(SendCode_Button);  //After it first code send
 
         By ReSend = By.id("FPReSendCode");
         Thread.sleep(70000);
-        driver.element().click(ReSend);
+        driver.element().click(ReSend);  //After it second code send
 
         Thread.sleep(100000);
-        driver.element().click(ReSend) ;
+        driver.element().click(ReSend) ;  //After it third code send
 
         Thread.sleep(100000);
-        driver.element().click(ReSend) ;
-
-        Thread.sleep(100000);
-        driver.element().click(ReSend) ;
+        driver.element().click(ReSend) ; //After it error message appear
 
         By Error= By.id("FPReSendErrors") ;
         driver.element().verifyThat(Error).text().isEqualTo("You have exceeded the number of allowed attempts to send reset code . Please contact customer service to complete reset password process.").perform();
