@@ -4,6 +4,7 @@
     <test name="Test All Classes">
         <classes>
            <class name="WaffarXWEB.F_Verification_Account"/>
+            <class name="WaffarXWEB.Z_ForgetPassword"/>
         </classes>
     </test>
 </suite>
