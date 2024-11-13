@@ -15,6 +15,27 @@ public class C_Search
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
 
+    private void retryClick(By locator, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                driver.element().click(locator);
+                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(500); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
+    }
+
     private void Login()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
@@ -41,7 +62,8 @@ public class C_Search
     {
         Login() ;
         driver.element().type(Search_text, "dfjkjdfkdjk" ) ;
-        driver.element().click(Search_Button);
+      //  driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By Search_Result = By.linkText("Stores (0)") ;
         driver.element().verifyThat(Search_Result).isVisible().perform();
     }
@@ -51,7 +73,8 @@ public class C_Search
     {
         Login() ;
         driver.element().type(Search_text, "amazon" ) ;
-        driver.element().click(Search_Button);
+       // driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By AmazonStore = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div[1]/div[1]/h3/a") ;
         driver.element().verifyThat(AmazonStore).isVisible().perform();
         By Hatolna_ShoppingStore = By.linkText("Hatolna Shopping") ;
@@ -63,7 +86,8 @@ public class C_Search
     {
         Login() ;
         driver.element().type(Search_text, "2b" ) ;
-        driver.element().click(Search_Button);
+     //   driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By store_2b= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_2b).isVisible().perform();
     }
@@ -73,7 +97,8 @@ public class C_Search
     {
         Login();
         driver.element().type(Search_text, "jum" ) ;
-        driver.element().click(Search_Button);
+       // driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By store_jumia= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_jumia).isVisible().perform();
     }
@@ -83,7 +108,8 @@ public class C_Search
     {
         Login();
         driver.element().type(Search_text, "the hut" ) ;
-        driver.element().click(Search_Button);
+     //   driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By store_TheHut= By.linkText("The Hut") ;
         driver.element().verifyThat(store_TheHut).isVisible().perform();
     }
@@ -93,7 +119,8 @@ public class C_Search
     {
         Login();
         driver.element().type(Search_text, "b.tech" ) ;
-        driver.element().click(Search_Button);
+      //  driver.element().click(Search_Button);
+        retryClick(Search_Button, 5); // Retry up to 5 times
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
     }
