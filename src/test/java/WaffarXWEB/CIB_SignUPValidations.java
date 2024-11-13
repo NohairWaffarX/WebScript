@@ -18,21 +18,49 @@ public class CIB_SignUPValidations
         driver.browser().navigateToURL("https://portal-test.waffarx.com/en-eg");
     }
 
+    private void retryClick(By locator, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                driver.element().click(locator);
+                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(500); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
+    }
+
     private void clickCIBButton() {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
         driver.element().waitToBeReady(Register_Button);
         driver.element().clickUsingJavascript(Register_Button);
+//        retryClick(Register_Button, 5); // Retry up to 5 times
 
         By CIB_Button = By.xpath("//*[@id=\"newSignUp\"]/div/div/div/div[1]/a[2]") ;
-        driver.element().click(CIB_Button);
+//        driver.element().click(CIB_Button);
+        retryClick(CIB_Button, 5); // Retry up to 5 times
 
         CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
-        driver.element().clickUsingJavascript(CloseBrowser_extension);
+//        driver.element().clickUsingJavascript(CloseBrowser_extension);
+        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
 
         By Next = By.className("cib-btn") ;
-        driver.element().click(Next);
-        driver.element().clickUsingJavascript(CloseBrowser_extension);
-        driver.element().click(Next);
+      //  driver.element().click(Next);
+        retryClick(Next, 5); // Retry up to 5 times
+      //  driver.element().clickUsingJavascript(CloseBrowser_extension);
+        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
+      //  driver.element().click(Next);
+        retryClick(Next, 5); // Retry up to 5 times
+
 
         FullName  = By.id("RegisterFirstName");
         Password = By.id("RegisterPassword");
@@ -44,6 +72,8 @@ public class CIB_SignUPValidations
         PasswordError = By.id("RegisterPassword-error");
         ConfirmPasswordError = By.id("RegisterConfirmPassword-error");
     }
+
+
 
     @Test
     public void A_Check_that_ErrorAppear_whenNameIs_SymbolsANDChars()
@@ -187,7 +217,9 @@ public class CIB_SignUPValidations
         driver.element().type(ConfirmPassword, "Qw222222");
         driver.element().keyPress(JoinNow_Button, ENTER);
 
-        driver.element().clickUsingJavascript(CloseBrowser_extension);
+      //  driver.element().clickUsingJavascript(CloseBrowser_extension);
+        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
+
         By AddCard = By.xpath("//*[@id=\"AddCardSubmit\"]/div[1]/input");
         driver.element().verifyThat(AddCard).isVisible().perform();
     }
