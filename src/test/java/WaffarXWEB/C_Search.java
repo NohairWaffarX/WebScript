@@ -82,7 +82,7 @@ public class C_Search
     public void A_Check_that_ResultCorrect_when_SearchWithDataNotFound()
     {
         Login() ;
-        retryType(Search_text, "dfjkjdfkdjk", 8);
+        retryType(Search_text, "dfjkjdfkdjk", 20);
         retryClick(Search_Button, 20);
         By Search_Result = By.linkText("Stores (0)") ;
         driver.element().verifyThat(Search_Result).isVisible().perform();
