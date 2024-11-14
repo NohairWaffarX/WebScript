@@ -84,10 +84,8 @@ public class C_Search
     public void A_Check_that_ResultCorrect_when_SearchWithDataNotFound()
     {
         Login() ;
-//        driver.element().type(Search_text, "dfjkjdfkdjk" ) ;
         retryType(Search_text, "dfjkjdfkdjk", 8);
-      //  driver.element().click(Search_Button);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By Search_Result = By.linkText("Stores (0)") ;
         driver.element().verifyThat(Search_Result).isVisible().perform();
     }
@@ -96,10 +94,8 @@ public class C_Search
     public void B_Check_that_ResultCorrect_when_SearchWith_Amazon()
     {
         Login() ;
-//        driver.element().type(Search_text, "amazon" ) ;
         retryType(Search_text, "amazon", 8);
-       // driver.element().click(Search_Button);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By AmazonStore = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div[1]/div[1]/h3/a") ;
         driver.element().verifyThat(AmazonStore).isVisible().perform();
         By Hatolna_ShoppingStore = By.linkText("Hatolna Shopping") ;
@@ -110,10 +106,8 @@ public class C_Search
     public void C_Check_that_ResultCorrect_when_SearchWith_2B()
     {
         Login() ;
-//        driver.element().type(Search_text, "2b" ) ;
         retryType(Search_text, "2b", 8);
-     //   driver.element().click(Search_Button);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By store_2b= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_2b).isVisible().perform();
     }
@@ -122,10 +116,8 @@ public class C_Search
     public void D_Check_that_ResultCorrect_when_SearchWith_jum()
     {
         Login();
-//        driver.element().type(Search_text, "jum" ) ;
         retryType(Search_text, "jum", 8);
-       // driver.element().click(Search_Button);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By store_jumia= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_jumia).isVisible().perform();
     }
@@ -134,10 +126,8 @@ public class C_Search
     public void E_Check_that_ResultCorrect_when_SearchWith_TheHut()
     {
         Login();
-//        driver.element().type(Search_text, "the hut" ) ;
         retryType(Search_text, "the hut", 8);
-     //   driver.element().click(Search_Button);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By store_TheHut= By.linkText("The Hut") ;
         driver.element().verifyThat(store_TheHut).isVisible().perform();
     }
@@ -146,10 +136,8 @@ public class C_Search
     public void F_Check_that_ResultCorrect_when_SearchWith_BTech()
     {
         Login();
-//        driver.element().type(Search_text, "b.tech" ) ;
-      //  driver.element().click(Search_Button);
         retryType(Search_text, "b.tech", 8);
-        retryClick(Search_Button, 5); // Retry up to 5 times
+        retryClick(Search_Button, 5);
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
     }
