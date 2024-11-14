@@ -8,6 +8,8 @@
             <class name="WaffarXWEB.CIB_SignUPValidations"/>
             <class name="WaffarXWEB.B_Login_Page"/>
             <class name="WaffarXWEB.A_SignUP_Page"/>
+            <class name="WaffarXWEB.E_Refer_andEarn"/>
+            <class name="WaffarXWEB.GiftCards"/>
         </classes>
     </test>
 </suite>
