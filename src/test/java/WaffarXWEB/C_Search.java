@@ -26,7 +26,7 @@ public class C_Search
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(500); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -85,7 +85,7 @@ public class C_Search
     {
         Login() ;
         retryType(Search_text, "dfjkjdfkdjk", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By Search_Result = By.linkText("Stores (0)") ;
         driver.element().verifyThat(Search_Result).isVisible().perform();
     }
@@ -95,7 +95,7 @@ public class C_Search
     {
         Login() ;
         retryType(Search_text, "amazon", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By AmazonStore = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div[1]/div[1]/h3/a") ;
         driver.element().verifyThat(AmazonStore).isVisible().perform();
         By Hatolna_ShoppingStore = By.linkText("Hatolna Shopping") ;
@@ -107,7 +107,7 @@ public class C_Search
     {
         Login() ;
         retryType(Search_text, "2b", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By store_2b= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_2b).isVisible().perform();
     }
@@ -117,7 +117,7 @@ public class C_Search
     {
         Login();
         retryType(Search_text, "jum", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By store_jumia= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_jumia).isVisible().perform();
     }
@@ -127,7 +127,7 @@ public class C_Search
     {
         Login();
         retryType(Search_text, "the hut", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By store_TheHut= By.linkText("The Hut") ;
         driver.element().verifyThat(store_TheHut).isVisible().perform();
     }
@@ -137,7 +137,7 @@ public class C_Search
     {
         Login();
         retryType(Search_text, "b.tech", 8);
-        retryClick(Search_Button, 5);
+        retryClick(Search_Button, 8);
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
     }
