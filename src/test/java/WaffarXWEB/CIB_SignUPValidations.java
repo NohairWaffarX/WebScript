@@ -43,27 +43,17 @@ public class CIB_SignUPValidations
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
         driver.element().waitToBeReady(Register_Button);
         driver.element().clickUsingJavascript(Register_Button);
-//        retryClick(Register_Button, 5); // Retry up to 5 times
 
         By CIB_Button = By.xpath("//*[@id=\"newSignUp\"]/div/div/div/div[1]/a[2]") ;
-//        driver.element().click(CIB_Button);
         retryClick(CIB_Button, 5); // Retry up to 5 times
 
         CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
-//        driver.element().clickUsingJavascript(CloseBrowser_extension);
-        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
-
-        //By Next = By.className("cib-btn") ;
-//        By Next = By.linkText("Next") ;
+        retryClick(CloseBrowser_extension, 5);
         By Next1 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[2]/div[2]/a") ;
-
-      //  driver.element().click(Next);
-        retryClick(Next1, 5); // Retry up to 5 times
-      //  driver.element().clickUsingJavascript(CloseBrowser_extension);
-        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
-      //  driver.element().click(Next);
+        retryClick(Next1, 5);
+        retryClick(CloseBrowser_extension, 5);
         By Next2 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[3]/a") ;
-        retryClick(Next2, 7); // Retry up to 5 times
+        retryClick(Next2, 7);
 
         FullName  = By.id("RegisterFirstName");
         Password = By.id("RegisterPassword");
@@ -217,10 +207,7 @@ public class CIB_SignUPValidations
         driver.element().type(Password, "Qw222222");
         driver.element().type(ConfirmPassword, "Qw222222");
         driver.element().keyPress(JoinNow_Button, ENTER);
-
-      //  driver.element().clickUsingJavascript(CloseBrowser_extension);
-        retryClick(CloseBrowser_extension, 5); // Retry up to 5 times
-
+        retryClick(CloseBrowser_extension, 5);
         By AddCard = By.xpath("//*[@id=\"AddCardSubmit\"]/div[1]/input");
         driver.element().verifyThat(AddCard).isVisible().perform();
     }
