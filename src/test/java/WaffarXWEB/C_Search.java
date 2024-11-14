@@ -69,10 +69,12 @@ public class C_Search
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        driver.element().type(Email, "gnohair@gmail.com");
+        retryType(Email, "gnohair@gmail.com", 8);
+      //  driver.element().type(Email, "gnohair@gmail.com");
 
         By Password = By.id("LoginPassword");
-        driver.element().type(Password, "Ng555555");
+       // driver.element().type(Password, "Ng555555");
+        retryType(Password, "Ng555555", 8);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
