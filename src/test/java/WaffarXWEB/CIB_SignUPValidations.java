@@ -73,7 +73,7 @@ public class CIB_SignUPValidations
         retryClick(CloseBrowser_extension, 20);
         By Next1 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[2]/div[2]/a") ;
         retryClick(Next1, 20);
-        retryClick(CloseBrowser_extension, 20);
+       // retryClick(CloseBrowser_extension, 20);
         By Next2 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[3]/a") ;
         retryClick(Next2, 20);
 
