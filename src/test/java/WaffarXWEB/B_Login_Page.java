@@ -26,7 +26,7 @@ public class B_Login_Page
                 System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry type.", ie);
@@ -54,8 +54,8 @@ public class B_Login_Page
     public void A_Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohairrr@gmail.com", 8);
-        retryType(Password, "Ng555555", 8);
+        retryType(Email, "gnohairrr@gmail.com", 20);
+        retryType(Password, "Ng555555", 20);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
     }
@@ -64,8 +64,8 @@ public class B_Login_Page
     public void B_Check_that_ErrorAppear_whenInsert_CorrectEmail_and_WrongPassword()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@gmail.com", 8);
-        retryType(Password, "Qw22222", 8);
+        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Password, "Qw22222", 20);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
     }
@@ -74,8 +74,8 @@ public class B_Login_Page
     public void C_Check_that_Login_workCorrectly()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@gmail.com", 8);
-        retryType(Password, "Ng555555", 8);
+        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Password, "Ng555555", 20);
         driver.element().keyPress(SignIN_Button, ENTER);
         By Search_text = By.id("searchtext");
         driver.element().verifyThat(Search_text).isVisible().perform();
@@ -85,7 +85,7 @@ public class B_Login_Page
     public void D_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@", 8);
+        retryType(Email, "gnohair@", 20);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(SignIN_Button).isVisible().perform();
     }
