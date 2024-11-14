@@ -204,7 +204,6 @@ public class A_SignUP_Page
     public void O_Check_that_SignUp_workCorrectly()
     {
         clickRegisterButton() ;
-        getRandomEmail() ;
         retryType(FullName, "Nohair", 8);
         retryType(Email, getRandomEmail(), 8);
         retryType(Password, "Qw222222", 8);
