@@ -15,6 +15,47 @@ public class E_Refer_andEarn
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
 
+    private void retryClick(By locator, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                driver.element().click(locator);
+                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(800); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
+    }
+
+    private void retryType(By locator, String text, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                driver.element().type(locator, text);
+                System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
+                return; // Exit the method if typing is successful
+            } catch (org.openqa.selenium.ElementNotInteractableException e) {
+                System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(800); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry type.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to type into the element after " + maxRetries + " attempts.");
+    }
     private void Open_Refer_Page()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
@@ -25,16 +66,16 @@ public class E_Refer_andEarn
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        driver.element().type(Email, "gnohair@gmail.com");
+        retryType(Email, "gnohair@gmail.com", 20);
 
         By Password = By.id("LoginPassword");
-        driver.element().type(Password, "Ng555555");
+        retryType(Password, "Ng555555", 20);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By Refer_button = By.linkText("Refer & Earn") ;
-        driver.element().click(Refer_button) ;
+        retryClick(Refer_button, 20);
 
         UserEmail = By.id("toEmail");
         Send_Invitation_button = By.id("sendReferral");
@@ -45,8 +86,8 @@ public class E_Refer_andEarn
     public void A_Check_that_ErrorAppear_whenEmail_IsEmpty()
     {
         Open_Refer_Page() ;
-        driver.element().type(UserEmail, " ");
-        driver.element().click(Send_Invitation_button) ;
+        retryType(UserEmail, " ", 20);
+        retryClick(Send_Invitation_button, 20);
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
@@ -54,8 +95,8 @@ public class E_Refer_andEarn
     public void B_Check_that_ErrorAppear_WhenInsert_WrongFormat_InEmail()
     {
         Open_Refer_Page() ;
-        driver.element().type(UserEmail, "jkjkdj");
-        driver.element().click(Send_Invitation_button) ;
+        retryType(UserEmail, "jkjkdj", 20);
+        retryClick(Send_Invitation_button, 20);
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
@@ -63,8 +104,8 @@ public class E_Refer_andEarn
     public void C_Check_that_ErrorAppear_WhenRefer_yourself()
     {
         Open_Refer_Page() ;
-        driver.element().type(UserEmail, "gnohair@gmail.com");
-        driver.element().click(Send_Invitation_button) ;
+        retryType(UserEmail, "gnohair@gmail.com", 20);
+        retryClick(Send_Invitation_button, 20);
         driver.element().verifyThat(Error).text().isEqualTo("You cannot refer yourself.").perform();
     }
 
@@ -72,8 +113,8 @@ public class E_Refer_andEarn
     public void D_Check_that_ErrorAppear_WhenRefer_Mail_already_InWaffarX()
     {
         Open_Refer_Page() ;
-        driver.element().type(UserEmail, "mg55851@gmail.com");
-        driver.element().click(Send_Invitation_button) ;
+        retryType(UserEmail, "mg55851@gmail.com", 20);
+        retryClick(Send_Invitation_button, 20);
         driver.element().verifyThat(Error).text().isEqualTo("This email is already registered.").perform();
     }
 
@@ -81,8 +122,8 @@ public class E_Refer_andEarn
     public void D_Check_that_ErrorAppear_WhenMail_already_referred()
     {
         Open_Refer_Page() ;
-        driver.element().type(UserEmail, "j23134263@gmail.com");
-        driver.element().click(Send_Invitation_button) ;
+        retryType(UserEmail, "j23134263@gmail.com", 20);
+        retryClick(Send_Invitation_button, 20);
         driver.element().verifyThat(Error).text().isEqualTo("This user has already been referred.").perform();
     }
 
