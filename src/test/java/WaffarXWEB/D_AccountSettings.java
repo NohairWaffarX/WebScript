@@ -90,24 +90,19 @@ public class D_AccountSettings
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-//        driver.element().type(Email, "gnohair@gmail.com");
         retryType(Email, "gnohair@gmail.com", 8);
 
         By Password = By.id("LoginPassword");
-//        driver.element().type(Password, "Ng555555");
         retryType(Password, "Ng555555", 8);
 
         By SignIN_Button = By.xpath("//*[@id='Login']/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By userinfo = By.xpath("//*[@id='fixedHeader']/div[3]/div/div[2]/div[3]/div/i") ;
-        //driver.element().waitToBeReady(userinfo) ;
 
         retryHover(userinfo, 20);
-       // driver.element().hover(userinfo);
 
         By AccountSettings_choice= By.linkText("Account Settings") ;
-       // driver.element().clickUsingJavascript(AccountSettings_choice);
         retryClick(AccountSettings_choice, 5);
 
         Update_name= By.linkText("Update Name") ;
@@ -122,9 +117,7 @@ public class D_AccountSettings
     public void A_UpdateName_Check_that_ErrorAppear_whenFields_AreEmpty()
     {
         OpenAccountSettings_Page() ;
-       // driver.element().click(Update_name);
         retryClick(Update_name, 5);
-      //  driver.element().click(submitButton);
         retryClick(submitButton, 5);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("This field is required.").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("This field is required.").perform();
@@ -134,13 +127,9 @@ public class D_AccountSettings
     public void B_UpdateName_Check_that_ErrorAppear_whenInsert_SymbolsAndSymbols_inNameFields()
     {
         OpenAccountSettings_Page() ;
-       // driver.element().click(Update_name);
-        retryClick(Update_name, 5); // Retry up to 5 times
-//        driver.element().type(FirstName, "@#@#2333");
+        retryClick(Update_name, 5);
         retryType(FirstName, "@#@#2333", 8);
-//        driver.element().type(LastName, "@#@#2333");
         retryType(LastName, "@#@#2333", 8);
-      //  driver.element().click(submitButton);
         retryClick(submitButton, 5); // Retry up to 5 times
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("Sorry, Numbers and special characters are not allowed, please make sure you enter a valid input.").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Sorry, Numbers and special characters are not allowed, please make sure you enter a valid input.").perform();
@@ -150,14 +139,10 @@ public class D_AccountSettings
     public void C_UpdateName_Check_that_ErrorAppear_whenInsert_lessThanMin_inNameFields()
     {
         OpenAccountSettings_Page() ;
-       // driver.element().click(Update_name);
-        retryClick(Update_name, 5); // Retry up to 5 times
-//        driver.element().type(FirstName, "nn");
-//        driver.element().type(LastName, "nn");
+        retryClick(Update_name, 5);
         retryType(FirstName, "nn", 8);
         retryType(LastName, "nn", 8);
-      //  driver.element().click(submitButton);
-        retryClick(submitButton, 5); // Retry up to 5 times
+        retryClick(submitButton, 5);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("First name minimum length is 3 character").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name minimum length is 3 character").perform();
     }
@@ -166,14 +151,10 @@ public class D_AccountSettings
     public void D_UpdateName_Check_that_ErrorAppear_whenInsert_GreaterThanMax_inNameFields()
     {
         OpenAccountSettings_Page() ;
-      //  driver.element().click(Update_name);
-        retryClick(Update_name, 5); // Retry up to 5 times
-//        driver.element().type(FirstName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-//        driver.element().type(LastName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        retryClick(Update_name, 5);
         retryType(FirstName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 8);
         retryType(LastName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 8);
-      //  driver.element().click(submitButton);
-        retryClick(submitButton, 5); // Retry up to 5 times
+        retryClick(submitButton, 5);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("First name maximum length is 50 character").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name maximum length is 50 character").perform();
     }
@@ -182,14 +163,10 @@ public class D_AccountSettings
     public void E_UpdateName_Check_that_ErrorAppear_when_Not_DeclareData()
     {
         OpenAccountSettings_Page() ;
-       // driver.element().click(Update_name);
-        retryClick(Update_name, 5); // Retry up to 5 times
-//        driver.element().type(FirstName, "Nohair");
-//        driver.element().type(LastName, "gamal");
+        retryClick(Update_name, 5);
         retryType(FirstName, "Nohair", 8);
         retryType(LastName, "gamal", 8);
-       // driver.element().click(submitButton);
-        retryClick(submitButton, 5); // Retry up to 5 times
+        retryClick(submitButton, 5);
         By declare_Error= By.id("AddressModalMSG") ;
         driver.element().verifyThat(declare_Error).text().isEqualTo("You must declare that all information provided is true.").perform();
     }
@@ -198,16 +175,12 @@ public class D_AccountSettings
     public void F_Check_that_UpdateName_WorkCorrectly()
     {
         OpenAccountSettings_Page() ;
-       // driver.element().click(Update_name);
-        retryClick(Update_name, 5); // Retry up to 5 times
-//        driver.element().type(FirstName, "nohair");
-//        driver.element().type(LastName, "gamal");
+        retryClick(Update_name, 5);
         retryType(FirstName, "nohair", 8);
         retryType(LastName, "gamal", 8);
         By declare_checkbox = By.id("Mailingagree");
         driver.element().click(declare_checkbox) ;
-      //  driver.element().click(submitButton);
-        retryClick(submitButton, 5); // Retry up to 5 times
+        retryClick(submitButton, 5);
         By message = By.id("AddressModalMSG");
         driver.element().verifyThat(message).text().isEqualTo(" Data Saved").perform();
     }
@@ -218,30 +191,24 @@ public class D_AccountSettings
         OpenAccountSettings_Page() ;
 
         By Update_Gender_Button = By.id("UpdateUserGender");
-     //   driver.element().click(Update_Gender_Button) ;
-        retryClick(Update_Gender_Button, 5); // Retry up to 5 times
+        retryClick(Update_Gender_Button, 5);
 
         By Female_Choice = By.id("f-button");
-       // driver.element().click(Female_Choice) ;
-        retryClick(Female_Choice, 5); // Retry up to 5 times
+        retryClick(Female_Choice, 5);
 
         By save = By.xpath("//*[@id='UpdateUserGenderForm']/div/div[3]/input[1]") ;
-      //  driver.element().click(save) ;
         retryClick(save, 5);
 
         By GenderValue= By.id("FemaleGender") ;
         driver.element().verifyThat(GenderValue).text().isEqualTo("Female").perform();
 
         By Update_Gender_Button2 = By.id("UpdateUserGender");
-      //  driver.element().click(Update_Gender_Button2) ;
         retryClick(Update_Gender_Button2, 5);
 
         By Male_Choice= By.id("m-button");
-      //  driver.element().click(Male_Choice) ;
         retryClick(Male_Choice, 5);
 
         By save2 = By.xpath("//*[@id='UpdateUserGenderForm']/div/div[3]/input[1]") ;
-       // driver.element().click(save2) ;
         retryClick(save2, 5);
     }
 
@@ -251,27 +218,21 @@ public class D_AccountSettings
         OpenAccountSettings_Page() ;
 
         By Update_Date_ofBirth_Button= By.id("UpdateUserDOB");
-      //  driver.element().click(Update_Date_ofBirth_Button) ;
         retryClick(Update_Date_ofBirth_Button, 5);
 
         By Year_List = By.id("year");
-//        driver.element().waitToBeReady(Year_List);
-       // driver.element().clickUsingJavascript(Year_List);
         retryClick(Year_List, 20);
         driver.element().select(Year_List, "1940");
 
         By Month_List = By.id("month");
-       // driver.element().click(Month_List) ;
         retryClick(Month_List, 5);
         driver.element().select(Month_List, "9");
 
         By Day_List = By.id("day");
-       // driver.element().click(Day_List) ;
         retryClick(Day_List, 5);
         driver.element().select(Day_List, "10");
 
         By save = By.xpath("//*[@id='UpdateUserBirthDateForm']/div[2]/input[1]") ;
-      //  driver.element().click(save) ;
         retryClick(save, 8);
 
         By Date_ofBirthValue= By.id("UserDOB") ;
@@ -279,27 +240,21 @@ public class D_AccountSettings
 
         //////////////////// repeat steps again to put default values as 2/5/1996 /////////////////////
         By Update_Date_ofBirth_Button2= By.id("UpdateUserDOB");
-       // driver.element().click(Update_Date_ofBirth_Button2) ;
         retryClick(Update_Date_ofBirth_Button2, 5);
 
         By Year_List2 = By.id("year");
-//        driver.element().waitToBeReady(Year_List2);
-      //  driver.element().clickUsingJavascript(Year_List2);
         retryClick(Year_List2, 20);
         driver.element().select(Year_List2, "1996");
 
         By Month_List2 = By.id("month");
-      //  driver.element().click(Month_List2) ;
         retryClick(Month_List2, 5);
         driver.element().select(Month_List2, "5");
 
         By Day_List2 = By.id("day");
-     //   driver.element().click(Day_List2) ;
         retryClick(Day_List2, 5);
         driver.element().select(Day_List2, "2");
 
         By save2 = By.xpath("//*[@id=\"UpdateUserBirthDateForm\"]/div[2]/input[1]") ;
-    //    driver.element().click(save2) ;
         retryClick(save2, 5);
 
         By Date_ofBirthValue2= By.id("UserDOB") ;
