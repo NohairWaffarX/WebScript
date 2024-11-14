@@ -36,6 +36,29 @@ public class C_Search
         throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
     }
 
+
+    private void retryType(By locator, String text, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                driver.element().type(locator, text);
+                System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
+                return; // Exit the method if typing is successful
+            } catch (org.openqa.selenium.ElementNotInteractableException e) {
+                System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(800); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry type.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to type into the element after " + maxRetries + " attempts.");
+    }
+
+
     private void Login()
     {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
@@ -61,7 +84,8 @@ public class C_Search
     public void A_Check_that_ResultCorrect_when_SearchWithDataNotFound()
     {
         Login() ;
-        driver.element().type(Search_text, "dfjkjdfkdjk" ) ;
+//        driver.element().type(Search_text, "dfjkjdfkdjk" ) ;
+        retryType(Search_text, "dfjkjdfkdjk", 8);
       //  driver.element().click(Search_Button);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By Search_Result = By.linkText("Stores (0)") ;
@@ -72,7 +96,8 @@ public class C_Search
     public void B_Check_that_ResultCorrect_when_SearchWith_Amazon()
     {
         Login() ;
-        driver.element().type(Search_text, "amazon" ) ;
+//        driver.element().type(Search_text, "amazon" ) ;
+        retryType(Search_text, "amazon", 8);
        // driver.element().click(Search_Button);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By AmazonStore = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div[1]/div[1]/h3/a") ;
@@ -85,7 +110,8 @@ public class C_Search
     public void C_Check_that_ResultCorrect_when_SearchWith_2B()
     {
         Login() ;
-        driver.element().type(Search_text, "2b" ) ;
+//        driver.element().type(Search_text, "2b" ) ;
+        retryType(Search_text, "2b", 8);
      //   driver.element().click(Search_Button);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By store_2b= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
@@ -96,7 +122,8 @@ public class C_Search
     public void D_Check_that_ResultCorrect_when_SearchWith_jum()
     {
         Login();
-        driver.element().type(Search_text, "jum" ) ;
+//        driver.element().type(Search_text, "jum" ) ;
+        retryType(Search_text, "jum", 8);
        // driver.element().click(Search_Button);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By store_jumia= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
@@ -107,7 +134,8 @@ public class C_Search
     public void E_Check_that_ResultCorrect_when_SearchWith_TheHut()
     {
         Login();
-        driver.element().type(Search_text, "the hut" ) ;
+//        driver.element().type(Search_text, "the hut" ) ;
+        retryType(Search_text, "the hut", 8);
      //   driver.element().click(Search_Button);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By store_TheHut= By.linkText("The Hut") ;
@@ -118,8 +146,9 @@ public class C_Search
     public void F_Check_that_ResultCorrect_when_SearchWith_BTech()
     {
         Login();
-        driver.element().type(Search_text, "b.tech" ) ;
+//        driver.element().type(Search_text, "b.tech" ) ;
       //  driver.element().click(Search_Button);
+        retryType(Search_text, "b.tech", 8);
         retryClick(Search_Button, 5); // Retry up to 5 times
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
