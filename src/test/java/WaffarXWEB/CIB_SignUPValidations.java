@@ -29,7 +29,7 @@ public class CIB_SignUPValidations
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(500); // Wait before retrying (500 ms)
+                    Thread.sleep(800); // Wait before retrying (500 ms)
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -67,15 +67,15 @@ public class CIB_SignUPValidations
         driver.element().clickUsingJavascript(Register_Button);
 
         By CIB_Button = By.xpath("//*[@id=\"newSignUp\"]/div/div/div/div[1]/a[2]") ;
-        retryClick(CIB_Button, 5); // Retry up to 5 times
+        retryClick(CIB_Button, 8);
 
         CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
-        retryClick(CloseBrowser_extension, 5);
+        retryClick(CloseBrowser_extension, 8);
         By Next1 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[2]/div[2]/a") ;
-        retryClick(Next1, 5);
-        retryClick(CloseBrowser_extension, 5);
+        retryClick(Next1, 8);
+        retryClick(CloseBrowser_extension, 8);
         By Next2 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[3]/a") ;
-        retryClick(Next2, 7);
+        retryClick(Next2, 8);
 
         FullName  = By.id("RegisterFirstName");
         Password = By.id("RegisterPassword");
