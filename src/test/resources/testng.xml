@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="My Test Suite">
-    <test name="Test All Classes" preserve-order="true">
+    <test name="Test All Classes">
         <classes>
             <class name="WaffarXWEB.C_Search"/>
             <class name="WaffarXWEB.D_AccountSettings"/>
             <class name="WaffarXWEB.CIB_SignUPValidations"/>
+            <class name="WaffarXWEB.B_Login_Page"/>
+            <class name="WaffarXWEB.A_SignUP_Page"/>
         </classes>
     </test>
 </suite>
