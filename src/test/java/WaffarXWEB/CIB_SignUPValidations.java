@@ -18,10 +18,15 @@ public class CIB_SignUPValidations
         driver.browser().navigateToURL("https://portal-test.waffarx.com/en-eg");
     }
 
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
+    }
+
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -43,6 +48,7 @@ public class CIB_SignUPValidations
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -60,22 +66,21 @@ public class CIB_SignUPValidations
         throw new RuntimeException("Failed to type into the element after " + maxRetries + " attempts.");
     }
 
-
     private void clickCIBButton() {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
         driver.element().waitToBeReady(Register_Button);
         driver.element().clickUsingJavascript(Register_Button);
 
         By CIB_Button = By.xpath("//*[@id=\"newSignUp\"]/div/div/div/div[1]/a[2]") ;
-        retryClick(CIB_Button, 20);
+        retryClick(CIB_Button, 30);
 
         CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
         retryClick(CloseBrowser_extension, 30);
         By Next1 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[2]/div[2]/a") ;
-        retryClick(Next1, 20);
+        retryClick(Next1, 30);
         retryClick(CloseBrowser_extension, 30);
         By Next2 = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[3]/a") ;
-        retryClick(Next2, 20);
+        retryClick(Next2, 30);
 
         FullName  = By.id("RegisterFirstName");
         Password = By.id("RegisterPassword");
@@ -92,7 +97,7 @@ public class CIB_SignUPValidations
     public void A_Check_that_ErrorAppear_whenNameIs_SymbolsANDChars()
     {
         clickCIBButton();
-        retryType(FullName, "@#$456", 20);
+        retryType(FullName, "@#$456", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name must be characters only").perform();
     }
@@ -101,7 +106,7 @@ public class CIB_SignUPValidations
     public void B_Check_that_ErrorAppear_whenName_isEmpty()
     {
         clickCIBButton() ;
-        retryType(FullName, " ", 20);
+        retryType(FullName, " ", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
     }
@@ -110,7 +115,7 @@ public class CIB_SignUPValidations
     public void C_Check_that_Name_has_max_limitation_as_50char()
     {
         clickCIBButton() ;
-        retryType(FullName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 20);
+        retryType(FullName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name maximum length is 50 character").perform();
     }
@@ -119,7 +124,7 @@ public class CIB_SignUPValidations
     public void D_Check_that_Name_has_min_limitation_as_3char()
     {
         clickCIBButton() ;
-        retryType(FullName, "AA", 20);
+        retryType(FullName, "AA", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(NameError).text().isEqualTo("Full name minimum length is 3 character").perform();
     }
@@ -128,7 +133,7 @@ public class CIB_SignUPValidations
     public void E_Check_that_ErrorAppear_whenEmail_isEmpty()
     {
         clickCIBButton() ;
-        retryType(Email, " ", 20);
+        retryType(Email, " ", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
@@ -137,7 +142,7 @@ public class CIB_SignUPValidations
     public void F_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickCIBButton() ;
-        retryType(Email, "nohair", 20);
+        retryType(Email, "nohair", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
@@ -146,8 +151,8 @@ public class CIB_SignUPValidations
     public void G_Check_that_ErrorAppear_whenPasswordANDConfirmPassword_areEmpty()
     {
         clickCIBButton() ;
-        retryType(Password, " ", 20);
-        retryType(ConfirmPassword, " ", 20);
+        retryType(Password, " ", 30);
+        retryType(ConfirmPassword, " ", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
         driver.element().verifyThat(ConfirmPasswordError).text().isEqualTo("Confirm Password must be at least 8 characters").perform();
@@ -157,8 +162,8 @@ public class CIB_SignUPValidations
     public void H_Check_that_ErrorAppear_whenPasswordANDConfirmPassword_NotMatch()
     {
         clickCIBButton() ;
-        retryType(Password, "Qw222222", 20);
-        retryType(ConfirmPassword, "As333333", 20);
+        retryType(Password, "Qw222222", 30);
+        retryType(ConfirmPassword, "As333333", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(ConfirmPasswordError).text().isEqualTo("The new password and confirm password do not match.").perform();
     }
@@ -167,8 +172,8 @@ public class CIB_SignUPValidations
     public void I_Check_that_ErrorAppear_whenPassword_less_than_8chars()   //password less than 8 chars
     {
         clickCIBButton() ;
-        retryType(Password, "Qw22222", 20);
-        retryType(ConfirmPassword, "Qw22222", 20);
+        retryType(Password, "Qw22222", 30);
+        retryType(ConfirmPassword, "Qw22222", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
@@ -177,8 +182,8 @@ public class CIB_SignUPValidations
     public void J_Check_that_ErrorAppear_whenPassword_Greater_than_20chars()   //password greater than 20 chars
     {
         clickCIBButton() ;
-        retryType(Password, "Qw2222222222222222222", 20);
-        retryType(ConfirmPassword, "Qw2222222222222222222", 20);
+        retryType(Password, "Qw2222222222222222222", 30);
+        retryType(ConfirmPassword, "Qw2222222222222222222", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
@@ -187,8 +192,8 @@ public class CIB_SignUPValidations
     public void K_Check_that_ErrorAppear_whenPassword_notContain_small_letter()   //password don't contain small letter
     {
         clickCIBButton() ;
-        retryType(Password, "QQ222222", 20);
-        retryType(ConfirmPassword, "QQ222222", 20);
+        retryType(Password, "QQ222222", 30);
+        retryType(ConfirmPassword, "QQ222222", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
@@ -197,8 +202,8 @@ public class CIB_SignUPValidations
     public void L_Check_that_ErrorAppear_whenPassword_notContain_Capital_letter() //password don't contain capital letter
     {
         clickCIBButton() ;
-        retryType(Password, "qq222222", 20);
-        retryType(ConfirmPassword, "qq222222", 20);
+        retryType(Password, "qq222222", 30);
+        retryType(ConfirmPassword, "qq222222", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
@@ -207,8 +212,8 @@ public class CIB_SignUPValidations
     public void M_Check_that_ErrorAppear_whenPassword_notContain_Number()   //password don't contain Number
     {
         clickCIBButton() ;
-        retryType(Password, "QQwwwwww", 20);
-        retryType(ConfirmPassword, "QQwwwwww", 20);
+        retryType(Password, "QQwwwwww", 30);
+        retryType(ConfirmPassword, "QQwwwwww", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
         driver.element().verifyThat(PasswordError).text().isEqualTo("Your password should be a minimum of 8 characters and a maximum of 20 characters. It should also contain the following: 1 Uppercase Letter, 1 Lowercase Letter, & 1 Number.").perform();
     }
@@ -224,12 +229,12 @@ public class CIB_SignUPValidations
     public void N_Check_that_SignUP_WorkCorrectly()   //password don't contain Number
     {
         clickCIBButton() ;
-        retryType(FullName, "Nohair", 20);
-        retryType(Email, getRandomEmail(), 20);
-        retryType(Password, "Qw222222", 20);
-        retryType(ConfirmPassword, "Qw222222", 20);
+        retryType(FullName, "Nohair", 30);
+        retryType(Email, getRandomEmail(), 30);
+        retryType(Password, "Qw222222", 30);
+        retryType(ConfirmPassword, "Qw222222", 30);
         driver.element().keyPress(JoinNow_Button, ENTER);
-        retryClick(CloseBrowser_extension, 20);
+        retryClick(CloseBrowser_extension, 30);
         By AddCard = By.xpath("//*[@id=\"AddCardSubmit\"]/div[1]/input");
         driver.element().verifyThat(AddCard).isVisible().perform();
     }
