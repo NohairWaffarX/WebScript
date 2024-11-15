@@ -15,33 +15,16 @@ public class D_AccountSettings
         driver = new SHAFT.GUI.WebDriver(); // to open browser
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
+    }
 
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().click(locator);
-                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
-                return; // Exit the method if click is successful
-            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
-                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
-                attempt++;
-                try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
-                } catch (InterruptedException ie) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
-                }
-            }
-        }
-        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
-    }
-
-    private void retryHover(By locator, int maxRetries) {
-        int attempt = 0;
-        while (attempt < maxRetries) {
-            try {
-                driver.element().hover(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
             } catch (org.openqa.selenium.ElementClickInterceptedException e) {
@@ -62,6 +45,7 @@ public class D_AccountSettings
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -79,6 +63,27 @@ public class D_AccountSettings
         throw new RuntimeException("Failed to type into the element after " + maxRetries + " attempts.");
     }
 
+    private void retryHover(By locator, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                ensureElementReady(locator);
+                driver.element().hover(locator);
+                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(800); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
+    }
 
     private void OpenAccountSettings_Page()
     {
@@ -90,20 +95,19 @@ public class D_AccountSettings
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Email, "gnohair@gmail.com", 30);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 20);
+        retryType(Password, "Ng555555", 30);
 
         By SignIN_Button = By.xpath("//*[@id='Login']/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By userinfo = By.xpath("//*[@id='fixedHeader']/div[3]/div/div[2]/div[3]/div/i") ;
-
-        retryHover(userinfo, 20);
+        retryHover(userinfo, 30);
 
         By AccountSettings_choice= By.linkText("Account Settings") ;
-        retryClick(AccountSettings_choice,20);
+        retryClick(AccountSettings_choice,30);
 
         Update_name= By.linkText("Update Name") ;
         submitButton = By.xpath("//*[@id='SettingsResetNamesForm']/input[4]");
@@ -117,8 +121,8 @@ public class D_AccountSettings
     public void A_UpdateName_Check_that_ErrorAppear_whenFields_AreEmpty()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryClick(submitButton, 20);
+        retryClick(Update_name, 30);
+        retryClick(submitButton, 30);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("This field is required.").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("This field is required.").perform();
     }
@@ -127,10 +131,10 @@ public class D_AccountSettings
     public void B_UpdateName_Check_that_ErrorAppear_whenInsert_SymbolsAndSymbols_inNameFields()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryType(FirstName, "@#@#2333", 20);
-        retryType(LastName, "@#@#2333", 20);
-        retryClick(submitButton, 20); // Retry up to 5 times
+        retryClick(Update_name, 30);
+        retryType(FirstName, "@#@#2333", 30);
+        retryType(LastName, "@#@#2333", 30);
+        retryClick(submitButton, 330); // Retry up to 5 times
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("Sorry, Numbers and special characters are not allowed, please make sure you enter a valid input.").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Sorry, Numbers and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
@@ -139,10 +143,10 @@ public class D_AccountSettings
     public void C_UpdateName_Check_that_ErrorAppear_whenInsert_lessThanMin_inNameFields()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryType(FirstName, "nn", 20);
-        retryType(LastName, "nn", 20);
-        retryClick(submitButton, 20);
+        retryClick(Update_name, 30);
+        retryType(FirstName, "nn", 30);
+        retryType(LastName, "nn", 30);
+        retryClick(submitButton, 30);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("First name minimum length is 3 character").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name minimum length is 3 character").perform();
     }
@@ -151,10 +155,10 @@ public class D_AccountSettings
     public void D_UpdateName_Check_that_ErrorAppear_whenInsert_GreaterThanMax_inNameFields()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryType(FirstName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 20);
-        retryType(LastName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 20);
-        retryClick(submitButton, 20);
+        retryClick(Update_name, 30);
+        retryType(FirstName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 30);
+        retryType(LastName, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 30);
+        retryClick(submitButton, 30);
         driver.element().verifyThat(FirstName_Error).text().isEqualTo("First name maximum length is 50 character").perform();
         driver.element().verifyThat(SecondName_Error).text().isEqualTo("Last name maximum length is 50 character").perform();
     }
@@ -163,10 +167,10 @@ public class D_AccountSettings
     public void E_UpdateName_Check_that_ErrorAppear_when_Not_DeclareData()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryType(FirstName, "Nohair", 20);
-        retryType(LastName, "gamal", 20);
-        retryClick(submitButton, 20);
+        retryClick(Update_name, 30);
+        retryType(FirstName, "Nohair", 30);
+        retryType(LastName, "gamal", 30);
+        retryClick(submitButton, 30);
         By declare_Error= By.id("AddressModalMSG") ;
         driver.element().verifyThat(declare_Error).text().isEqualTo("You must declare that all information provided is true.").perform();
     }
@@ -175,12 +179,12 @@ public class D_AccountSettings
     public void F_Check_that_UpdateName_WorkCorrectly()
     {
         OpenAccountSettings_Page() ;
-        retryClick(Update_name, 20);
-        retryType(FirstName, "nohair", 20);
-        retryType(LastName, "gamal", 20);
+        retryClick(Update_name, 30);
+        retryType(FirstName, "nohair", 30);
+        retryType(LastName, "gamal", 30);
         By declare_checkbox = By.id("Mailingagree");
         driver.element().click(declare_checkbox) ;
-        retryClick(submitButton, 20);
+        retryClick(submitButton, 30);
         By message = By.id("AddressModalMSG");
         driver.element().verifyThat(message).text().isEqualTo(" Data Saved").perform();
     }
@@ -191,25 +195,25 @@ public class D_AccountSettings
         OpenAccountSettings_Page() ;
 
         By Update_Gender_Button = By.id("UpdateUserGender");
-        retryClick(Update_Gender_Button, 20);
+        retryClick(Update_Gender_Button, 30);
 
         By Female_Choice = By.id("f-button");
-        retryClick(Female_Choice, 20);
+        retryClick(Female_Choice, 30);
 
         By save = By.xpath("//*[@id='UpdateUserGenderForm']/div/div[3]/input[1]") ;
-        retryClick(save, 20);
+        retryClick(save, 30);
 
         By GenderValue= By.id("FemaleGender") ;
         driver.element().verifyThat(GenderValue).text().isEqualTo("Female").perform();
 
         By Update_Gender_Button2 = By.id("UpdateUserGender");
-        retryClick(Update_Gender_Button2, 20);
+        retryClick(Update_Gender_Button2, 30);
 
         By Male_Choice= By.id("m-button");
-        retryClick(Male_Choice, 20);
+        retryClick(Male_Choice, 30);
 
         By save2 = By.xpath("//*[@id='UpdateUserGenderForm']/div/div[3]/input[1]") ;
-        retryClick(save2, 20);
+        retryClick(save2, 30);
     }
 
     @Test
@@ -218,44 +222,44 @@ public class D_AccountSettings
         OpenAccountSettings_Page() ;
 
         By Update_Date_ofBirth_Button= By.id("UpdateUserDOB");
-        retryClick(Update_Date_ofBirth_Button, 20);
+        retryClick(Update_Date_ofBirth_Button, 30);
 
         By Year_List = By.id("year");
-        retryClick(Year_List, 20);
+        retryClick(Year_List, 30);
         driver.element().select(Year_List, "1940");
 
         By Month_List = By.id("month");
-        retryClick(Month_List, 20);
+        retryClick(Month_List, 30);
         driver.element().select(Month_List, "9");
 
         By Day_List = By.id("day");
-        retryClick(Day_List, 20);
+        retryClick(Day_List, 30);
         driver.element().select(Day_List, "10");
 
         By save = By.xpath("//*[@id='UpdateUserBirthDateForm']/div[2]/input[1]") ;
-        retryClick(save, 20);
+        retryClick(save, 30);
 
         By Date_ofBirthValue= By.id("UserDOB") ;
         driver.element().verifyThat(Date_ofBirthValue).text().isEqualTo("10/09/1940").perform();
 
         //////////////////// repeat steps again to put default values as 2/5/1996 /////////////////////
         By Update_Date_ofBirth_Button2= By.id("UpdateUserDOB");
-        retryClick(Update_Date_ofBirth_Button2, 20);
+        retryClick(Update_Date_ofBirth_Button2, 30);
 
         By Year_List2 = By.id("year");
-        retryClick(Year_List2, 20);
+        retryClick(Year_List2, 30);
         driver.element().select(Year_List2, "1996");
 
         By Month_List2 = By.id("month");
-        retryClick(Month_List2, 20);
+        retryClick(Month_List2, 30);
         driver.element().select(Month_List2, "5");
 
         By Day_List2 = By.id("day");
-        retryClick(Day_List2, 20);
+        retryClick(Day_List2, 30);
         driver.element().select(Day_List2, "2");
 
         By save2 = By.xpath("//*[@id=\"UpdateUserBirthDateForm\"]/div[2]/input[1]") ;
-        retryClick(save2, 20);
+        retryClick(save2, 30);
 
         By Date_ofBirthValue2= By.id("UserDOB") ;
         driver.element().verifyThat(Date_ofBirthValue2).text().isEqualTo("02/05/1996").perform();
