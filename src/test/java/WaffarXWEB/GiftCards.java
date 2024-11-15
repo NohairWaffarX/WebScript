@@ -11,14 +11,18 @@ public class GiftCards {
     By SubTotal,TotalAmount,CardAmount,number,Error , Close;
     @BeforeMethod
     public void setupBrowser() {
-        driver = new SHAFT.GUI.WebDriver(); //to open browser
-        driver.browser().navigateToURL("https://portal-test.waffarx.com/en-eg"); //to navigate to URL
+        driver = new SHAFT.GUI.WebDriver();
+        driver.browser().navigateToURL("https://portal-test.waffarx.com/en-eg");
+    }
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
     }
 
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -40,6 +44,7 @@ public class GiftCards {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -59,29 +64,29 @@ public class GiftCards {
 
     private void Open_GiftCards_Page() {
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
-        driver.element().waitToBeReady(Register_Button); // Wait for the button to be clickable
-        driver.element().clickUsingJavascript(Register_Button); // To force click on this element
+        driver.element().waitToBeReady(Register_Button);
+        driver.element().clickUsingJavascript(Register_Button);
 
         By AlreadyMember_Button = By.xpath("//*[@id='newSignUp']/div/div/div/div[4]/a");
-        driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
+        driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Email, "gnohair@gmail.com", 30);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 20);
+        retryType(Password, "Ng555555", 30);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By Tab_GiftCards = By.linkText("Gift Cards");
-        retryClick(Tab_GiftCards, 20);
+        retryClick(Tab_GiftCards, 30);
 
         By CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
         driver.element().clickUsingJavascript(CloseBrowser_extension);
 
         By Amazon_GiftCards = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div[3]/div[2]/div[1]/a/img");
-        retryClick(Amazon_GiftCards, 20);
+        retryClick(Amazon_GiftCards, 30);
 
         driver.element().clickUsingJavascript(CloseBrowser_extension);
 
@@ -112,7 +117,7 @@ public class GiftCards {
         By Minus_Button = By.xpath("//*[@id=\"minusBtn\"]/i") ;
 
         for (int i=0 ; i<=5 ; i++) {
-            retryClick(Plus_Button, 20);
+            retryClick(Plus_Button, 30);
         }
 
         driver.element().verifyThat(SubTotal).text().isEqualTo("110").perform();
@@ -120,7 +125,7 @@ public class GiftCards {
         driver.element().verifyThat(CardAmount).text().isEqualTo("110").perform();
 
         for(int i=0 ; i<=8 ; i++) {
-            retryClick(Minus_Button, 20);
+            retryClick(Minus_Button, 30);
         }
 
         driver.element().verifyThat(SubTotal).text().isEqualTo("20").perform();
@@ -131,7 +136,7 @@ public class GiftCards {
     @Test
     public void C_CheckThat_WhenInsert_value_AllDataAppearCorrect() {
         Open_GiftCards_Page();
-        retryType(number, "5000", 20);
+        retryType(number, "5000", 30);
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(SubTotal).text().isEqualTo("5000").perform();
         driver.element().verifyThat(TotalAmount).text().isEqualTo("5000").perform();
@@ -141,7 +146,7 @@ public class GiftCards {
     @Test
     public void D_CheckThat_ErrorAppear_When_NumberLessThanMin() {
         Open_GiftCards_Page();
-        retryType(number, "0", 20);
+        retryType(number, "0", 30);
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(Error).text().isEqualTo("The amount must be between 1 and 6000").perform();
     }
@@ -149,7 +154,7 @@ public class GiftCards {
     @Test
     public void E_CheckThat_ErrorAppear_When_NumberGreaterThanMax() {
         Open_GiftCards_Page();
-        retryType(number, "7000", 20);
+        retryType(number, "7000", 30);
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(Error).text().isEqualTo("The amount must be between 1 and 6000").perform();
     }
