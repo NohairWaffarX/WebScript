@@ -16,10 +16,36 @@ public class ContactUS
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
     }
 
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
+    }
+    private void retryClick(By locator, int maxRetries) {
+        int attempt = 0;
+        while (attempt < maxRetries) {
+            try {
+                ensureElementReady(locator);
+                driver.element().click(locator);
+                System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
+                attempt++;
+                try {
+                    Thread.sleep(800); // Wait before retrying (500 ms)
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException("Interrupted while waiting to retry click.", ie);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
+    }
+
     private void retryType(By locator, String text, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -47,10 +73,10 @@ public class ContactUS
         driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Email, "gnohair@gmail.com", 30);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 20);
+        retryType(Password, "Ng555555", 30);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
@@ -79,16 +105,16 @@ public class ContactUS
         driver.element().select(ShoppingTrip, "5/21/2024 11:13:04 AM - Amazon.eg");
 
         By OrderNumber = By.id("OrderNumber") ;
-        retryType(OrderNumber, "456-22ABC#EF@D", 20);
+        retryType(OrderNumber, "456-22ABC#EF@D", 30);
 
         By OrderSubtotal = By.id("OrderSubtotal") ;
-        retryType(OrderSubtotal, "333.5", 20);
+        retryType(OrderSubtotal, "333.5", 30);
 
         By Note = By.id("TextMessage") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("(//*[@id=\"online-cashout\"]/div[6]/input)[1]") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -107,16 +133,16 @@ public class ContactUS
         driver.element().select(ShoppingTrip, "7/17/2024 10:04:08 PM - Spinneys");
 
         By OrderNumber = By.id("InStoreOrderNumber") ;
-        retryType(OrderNumber, "456-22ABC#EF@D", 20);
+        retryType(OrderNumber, "456-22ABC#EF@D", 30);
 
         By OrderSubtotal = By.id("InStoreOrderSubtotal") ;
-        retryType(OrderSubtotal, "333.5", 20);
+        retryType(OrderSubtotal, "333.5", 30);
 
         By Note = By.id("InStoreTextMessage") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("(//*[@id=\"online-cashout\"]/div[6]/input)[2]") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -132,10 +158,10 @@ public class ContactUS
         driver.element().select(CashOut_Method, "Fawry");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -147,10 +173,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Track My Welcome Bonus");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -163,10 +189,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Reset My Password");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -179,10 +205,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Change Email Address");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -194,10 +220,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Email Promotions Questions");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -209,10 +235,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "WaffarX Feedback");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -225,10 +251,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Store Feedback");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
@@ -261,10 +287,10 @@ public class ContactUS
         driver.element().select(Topic_DropDownList, "Blogger");
 
         By Note = By.id("TextMessageAll") ;
-        retryType(Note, "Nohair Test", 20);
+        retryType(Note, "Nohair Test", 30);
 
         By Submit_Button = By.xpath("//*[@id=\"divMsgAll\"]/div[2]/input") ;
-        driver.element().click(Submit_Button)  ;
+        retryClick(Submit_Button, 30);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
