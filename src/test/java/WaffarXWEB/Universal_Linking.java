@@ -16,10 +16,15 @@ public class Universal_Linking
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
     }
 
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
+    }
+
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -36,10 +41,12 @@ public class Universal_Linking
         }
         throw new RuntimeException("Failed to click the element after " + maxRetries + " attempts.");
     }
+
     private void retryType(By locator, String text, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -66,16 +73,16 @@ public class Universal_Linking
         driver.element().clickUsingJavascript(AlreadyMember_Button); // To force click on this element
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Email, "gnohair@gmail.com", 30);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 20);
+        retryType(Password, "Ng555555", 30);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By Help_choice= By.xpath("//*[@id=\"category-menu\"]/div/ul/li[9]/a/h2") ;
-        retryClick(Help_choice, 20);
+        retryClick(Help_choice, 30);
     }
 
     @Test
@@ -88,7 +95,7 @@ public class Universal_Linking
         String originalWindowHandler = driver.browser().getWindowHandle();
 
         By Page_Link = By.linkText("this page");
-        retryClick(Page_Link, 20);
+        retryClick(Page_Link, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -109,7 +116,7 @@ public class Universal_Linking
 
             String originalWindowHandler = driver.browser().getWindowHandle();
             By PrivacyAgreement_Link = By.linkText("Privacy Agreement.");
-            retryClick(PrivacyAgreement_Link, 20);
+            retryClick(PrivacyAgreement_Link, 30);
 
             for (String windowHandle : driver.getDriver().getWindowHandles()) {
                 if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -124,7 +131,7 @@ public class Universal_Linking
 
             ///////////// link of Privacy policy //////////////////////
             By PrivacyPolicy_Link = By.linkText("privacy policy");
-            retryClick(PrivacyPolicy_Link, 20);
+            retryClick(PrivacyPolicy_Link, 30);
 
             for (String windowHandle : driver.getDriver().getWindowHandles()) {
                 if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -148,7 +155,7 @@ public class Universal_Linking
         //***************  link of EmailSubscription **************** //
         By EmailSubscription_Link = By.xpath("//*[@id=\"1029\"]/div/p[4]/a");
         driver.element().scrollToElement(EmailSubscription_Link) ;
-        retryClick(EmailSubscription_Link, 20);
+        retryClick(EmailSubscription_Link, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -163,7 +170,7 @@ public class Universal_Linking
 
         //*************** link of Shopping Trips **************** //
         By ShoppingTrips_Link = By.linkText("View My Shopping Trips");
-        retryClick(ShoppingTrips_Link, 20);
+        retryClick(ShoppingTrips_Link, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -178,7 +185,7 @@ public class Universal_Linking
         //*************** link of contactUS **************** //
 
         By contactUS_Link = By.xpath("//*[@id=\"1027\"]/div/p[6]/a");
-        retryClick(contactUS_Link, 20);
+        retryClick(contactUS_Link, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -192,7 +199,7 @@ public class Universal_Linking
 
         //*************** link of My Cash Back Balance  **************** //
         By MyCashBackBalance_Link = By.xpath("//*[@id=\"1027\"]/div/p[8]/a");
-        retryClick(MyCashBackBalance_Link, 20);
+        retryClick(MyCashBackBalance_Link, 30);
 
         By CashBackTitle = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div/div[3]/h2");
         driver.element().verifyThat(CashBackTitle).isVisible().perform();
@@ -201,7 +208,7 @@ public class Universal_Linking
 
         //*************** link of  CashOut History **************** //
         By CashOutHistory_Link = By.xpath("//*[@id=\"1027\"]/div/p[10]/a");
-        retryClick(CashOutHistory_Link, 20);
+        retryClick(CashOutHistory_Link, 30);
 
         By DetailsTitle = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div/div[1]/h2");
         driver.element().verifyThat(DetailsTitle).isVisible().perform();
@@ -210,7 +217,7 @@ public class Universal_Linking
 
         //*************** link of My Account Settings **************** //
         By MyAccountSettings_Link = By.xpath("//*[@id=\"1027\"]/div/p[11]/a");
-        retryClick(MyAccountSettings_Link, 20);
+        retryClick(MyAccountSettings_Link, 30);
 
         By Update_name= By.linkText("Update Name") ;
         driver.element().verifyThat(Update_name).isVisible().perform();
@@ -219,7 +226,7 @@ public class Universal_Linking
 
         //*************** link of My ContactUS **************** //
         By ContactUS_Link2 = By.xpath("//*[@id=\"1030\"]/div/p/a");
-        retryClick(ContactUS_Link2, 20);
+        retryClick(ContactUS_Link2, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -240,7 +247,7 @@ public class Universal_Linking
 
         //*************** link of My ContactUS **************** //
         By ContactUS_Link = By.xpath("//*[@id=\"1005\"]/div/p[6]/a");
-        retryClick(ContactUS_Link, 20);
+        retryClick(ContactUS_Link, 30);
 
         By Title = By.xpath("//*[@id=\"heatmapArea\"]/main/div[2]/div/div[2]/div/h2");
         driver.element().verifyThat(Title).isVisible().perform();
@@ -248,7 +255,7 @@ public class Universal_Linking
 
         //*************** link of Account page **************** //
         By AccountPage_Link = By.xpath("//*[@id=\"1008\"]/div/p[2]/a");
-        retryClick(AccountPage_Link, 20);
+        retryClick(AccountPage_Link, 30);
 
         By Update_name= By.linkText("Update Name") ;
         driver.element().verifyThat(Update_name).isVisible().perform();
@@ -256,7 +263,7 @@ public class Universal_Linking
 
         //*************** link of Account settings **************** //
         By AccountSettings_Link = By.xpath("//*[@id=\"1008\"]/div/b/p[23]/a");
-        retryClick(AccountSettings_Link, 20);
+        retryClick(AccountSettings_Link, 30);
 
         By Update_name2 = By.linkText("Update Name") ;
         driver.element().verifyThat(Update_name2).isVisible().perform();
@@ -273,7 +280,7 @@ public class Universal_Linking
         String originalWindowHandler = driver.browser().getWindowHandle();
 
         By CustomerService_Link = By.xpath("//*[@id=\"1004\"]/div/p[3]/a");
-        retryClick(CustomerService_Link, 20);
+        retryClick(CustomerService_Link, 30);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
@@ -287,8 +294,8 @@ public class Universal_Linking
 
         //*************** link of CashBack **************** //
         By CashbackPage_Link = By.xpath("//*[@id=\"1068\"]/div/p[2]/a");
-        retryClick(CashbackPage_Link, 20);
-        
+        retryClick(CashbackPage_Link, 30);
+
         By CashBackTitle = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div/div[3]/h2");
         driver.element().verifyThat(CashBackTitle).isVisible().perform();
     }
