@@ -15,10 +15,14 @@ public class C_Search
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
 
+    private void ensureElementReady(By locator) {
+        driver.element().waitToBeReady(locator);
+    }
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -40,6 +44,7 @@ public class C_Search
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
+                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
@@ -67,10 +72,10 @@ public class C_Search
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 20);
+        retryType(Email, "gnohair@gmail.com", 30);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 20);
+        retryType(Password, "Ng555555", 30);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
@@ -82,8 +87,8 @@ public class C_Search
     public void A_Check_that_ResultCorrect_when_SearchWithDataNotFound()
     {
         Login() ;
-        retryType(Search_text, "dfjkjdfkdjk", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "dfjkjdfkdjk", 30);
+        retryClick(Search_Button, 30);
         By Search_Result = By.linkText("Stores (0)") ;
         driver.element().verifyThat(Search_Result).isVisible().perform();
     }
@@ -92,8 +97,8 @@ public class C_Search
     public void B_Check_that_ResultCorrect_when_SearchWith_Amazon()
     {
         Login() ;
-        retryType(Search_text, "amazon", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "amazon", 30);
+        retryClick(Search_Button, 30);
         By AmazonStore = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div[1]/div[1]/h3/a") ;
         driver.element().verifyThat(AmazonStore).isVisible().perform();
         By Hatolna_ShoppingStore = By.linkText("Hatolna Shopping") ;
@@ -104,8 +109,8 @@ public class C_Search
     public void C_Check_that_ResultCorrect_when_SearchWith_2B()
     {
         Login() ;
-        retryType(Search_text, "2b", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "2b", 30);
+        retryClick(Search_Button, 30);
         By store_2b= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_2b).isVisible().perform();
     }
@@ -114,8 +119,8 @@ public class C_Search
     public void D_Check_that_ResultCorrect_when_SearchWith_jum()
     {
         Login();
-        retryType(Search_text, "jum", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "jum", 30);
+        retryClick(Search_Button, 30);
         By store_jumia= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_jumia).isVisible().perform();
     }
@@ -124,8 +129,8 @@ public class C_Search
     public void E_Check_that_ResultCorrect_when_SearchWith_TheHut()
     {
         Login();
-        retryType(Search_text, "the hut", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "the hut", 30);
+        retryClick(Search_Button, 30);
         By store_TheHut= By.linkText("The Hut") ;
         driver.element().verifyThat(store_TheHut).isVisible().perform();
     }
@@ -134,8 +139,8 @@ public class C_Search
     public void F_Check_that_ResultCorrect_when_SearchWith_BTech()
     {
         Login();
-        retryType(Search_text, "b.tech", 20);
-        retryClick(Search_Button, 20);
+        retryType(Search_text, "b.tech", 30);
+        retryClick(Search_Button, 30);
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
     }
