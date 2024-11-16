@@ -14,15 +14,10 @@ public class B_Login_Page
         driver = new SHAFT.GUI.WebDriver(); // to open browser
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
     }
-    private void ensureElementReady(By locator) {
-        driver.element().waitToBeReady(locator);
-    }
-
     private void retryType(By locator, String text, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
-                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
