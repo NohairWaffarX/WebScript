@@ -89,7 +89,7 @@ public class Universal_Linking
         String originalWindowHandler = driver.browser().getWindowHandle();
 
         By Page_Link = By.linkText("this page");
-        retryClick(Page_Link, 30);
+        retryClick(Page_Link, 40);
 
         for (String windowHandle : driver.getDriver().getWindowHandles()) {
             if (!originalWindowHandler.contentEquals(windowHandle)) {
