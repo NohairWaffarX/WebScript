@@ -25,7 +25,7 @@ public class Z_ForgetPassword
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -46,7 +46,7 @@ public class Z_ForgetPassword
                 System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry type.", ie);
@@ -65,7 +65,7 @@ public class Z_ForgetPassword
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By ForgetPassword = By.linkText("Forgot Password?") ;
-        retryClick(ForgetPassword, 30);
+        retryClick(ForgetPassword, 40);
 
         ForgetPasswordEmail = By.xpath("//*[@id=\"sendOTPOne\"]/div/div/div/button[3]") ;
         ForgetPasswordMobile = By.xpath("//*[@id=\"sendOTPOne\"]/div/div/div/button[2]") ;
@@ -81,8 +81,8 @@ public class Z_ForgetPassword
     public void A_Email_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordEmail, 30);
-        retryClick(Send_Button, 30);
+        retryClick(ForgetPasswordEmail, 40);
+        retryClick(Send_Button, 40);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
@@ -90,9 +90,9 @@ public class Z_ForgetPassword
     public void B_Email_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordEmail, 30);
-        retryType(ReferEmail, "gnohair", 30);
-        retryClick(Send_Button, 30);
+        retryClick(ForgetPasswordEmail, 40);
+        retryType(ReferEmail, "gnohair", 40);
+        retryClick(Send_Button, 40);
         driver.element().verifyThat(EmailError).text().isEqualTo("The e-mail that you entered is wrong").perform();
     }
 
@@ -100,9 +100,9 @@ public class Z_ForgetPassword
     public void C_Email_Check_that_ErrorAppear_when_InsertEmail_notFound_inWaffarX()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordEmail, 30);
-        retryType(ReferEmail, "nohairrrr@nohairrrr.com", 30);
-        retryClick(Send_Button, 30);
+        retryClick(ForgetPasswordEmail, 40);
+        retryType(ReferEmail, "nohairrrr@nohairrrr.com", 40);
+        retryClick(Send_Button, 40);
         driver.element().verifyThat(EmailError).text().isEqualTo("This email is not registered at WaffarX.").perform();
     }
 
@@ -110,9 +110,9 @@ public class Z_ForgetPassword
     public void D_Email_Check_that_System_TerminateSpaces()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordEmail, 30);
-        retryType(ReferEmail, "      gnohair@gmail.com    ", 30);
-        retryClick(Send_Button, 30);
+        retryClick(ForgetPasswordEmail, 40);
+        retryType(ReferEmail, "      gnohair@gmail.com    ", 40);
+        retryClick(Send_Button, 40);
         By Register_Button = By.xpath("//*[@id='heatmapArea']/main/div[2]/div[1]/button");
         driver.element().verifyThat(Register_Button).isVisible().perform(); ;
     }
@@ -121,8 +121,8 @@ public class Z_ForgetPassword
     public void E_Mobile_Check_that_ErrorAppear_whenClickSend_withoutInsertData()
     {
         clickForgetPassword_Button();
-        retryClick(ForgetPasswordMobile, 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryClick(SendOTP_Button, 40);
         driver.element().verifyThat(MobileError).text().isEqualTo("This field is required.").perform();
     }
 
@@ -130,18 +130,18 @@ public class Z_ForgetPassword
     public void F_Mobile_Check_that_ErrorAppear_when_insert_LessThan_MinLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "010678", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "010678", 40);
+        retryClick(SendOTP_Button, 40);
         driver.element().verifyThat(MobileError).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
     @Test
     public void G_Mobile_Check_that_ErrorAppear_when_insert_GreaterThan_MaxLimitation_inPhone()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "010782378237823723873", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "010782378237823723873", 40);
+        retryClick(SendOTP_Button, 40);
         By Error = By.id("FPWrongEgMobNumber") ;
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
     }
@@ -150,9 +150,9 @@ public class Z_ForgetPassword
     public void H_Mobile_Check_that_ErrorAppear_when_insertNumber_NotJoin_inWaffarX()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "01552153666", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "01552153666", 40);
+        retryClick(SendOTP_Button, 40);
         By Error = By.id("FPErrors") ;
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number not verified at waffarx!").perform();
     }
@@ -161,9 +161,9 @@ public class Z_ForgetPassword
     public void I_Mobile_Check_that_OTP_sendCorrectlyWhen_insertCorrectNumber()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "01277249225", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "01277249225", 40);
+        retryClick(SendOTP_Button, 40);
         By Hint = By.id("CodeSentOn") ;
         driver.element().verifyThat(Hint).isVisible().perform();
     }
@@ -172,12 +172,12 @@ public class Z_ForgetPassword
     public void J_Mobile_OTPWindow_Check_that_ErrorAppear_without_insert_code()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "01277249225", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "01277249225", 40);
+        retryClick(SendOTP_Button, 40);
 
         By Verify_Button = By.id("VerifyFPCode") ;
-        retryClick(Verify_Button, 30);
+        retryClick(Verify_Button, 40);
 
         By Error = By.id("FPWrongVerify") ;
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure the reset password code is correct.").perform();
@@ -187,9 +187,9 @@ public class Z_ForgetPassword
     public void K_Mobile_OTPWindow_Check_that_ErrorAppear_when_insert_WrongCode()
     {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
-        retryType(Phone, "01277249225", 30);
-        retryClick(SendOTP_Button, 30);
+        retryClick(ForgetPasswordMobile, 40);
+        retryType(Phone, "01277249225", 40);
+        retryClick(SendOTP_Button, 40);
 
         By OTP1 = By.id("digitA") ;
         By OTP2 = By.id("digitB") ;
@@ -206,7 +206,7 @@ public class Z_ForgetPassword
         driver.element().type(OTP6 , "3");
 
         By Verify_Button = By.id("VerifyFPCode") ;
-        retryClick(Verify_Button, 30);
+        retryClick(Verify_Button, 40);
 
         By Error = By.id("FPWrongVerify") ;
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure the reset password code is correct.").perform();
@@ -215,23 +215,23 @@ public class Z_ForgetPassword
     @Test
     public void L_ForgetPassword_exceed3times() throws InterruptedException {
         clickForgetPassword_Button() ;
-        retryClick(ForgetPasswordMobile, 30);
+        retryClick(ForgetPasswordMobile, 40);
 
         By PhoneNumber_Field = By.id("UserMobileNumber");
-        retryType(PhoneNumber_Field, "01277249225", 30);
+        retryType(PhoneNumber_Field, "01277249225", 40);
 
         By SendCode_Button = By.id("SendCodeFP");
-        retryClick(SendCode_Button, 30);//After it first code send
+        retryClick(SendCode_Button, 40);//After it first code send
 
         By ReSend = By.id("FPReSendCode");
         Thread.sleep(70000);
-        retryClick(ReSend, 30);//After it second code send
+        retryClick(ReSend, 40);//After it second code send
 
         Thread.sleep(100000);
-        retryClick(ReSend, 30);//After it third code send
+        retryClick(ReSend, 40);//After it third code send
 
         Thread.sleep(100000);
-        retryClick(ReSend, 30); //After it error message appear
+        retryClick(ReSend, 40); //After it error message appear
 
         By Error= By.id("FPReSendErrors") ;
         driver.element().verifyThat(Error).text().isEqualTo("You have exceeded the number of allowed attempts to send reset code . Please contact customer service to complete reset password process.").perform();
