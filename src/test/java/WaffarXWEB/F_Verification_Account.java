@@ -14,15 +14,10 @@ public class F_Verification_Account
         driver = new SHAFT.GUI.WebDriver(); // to open browser
         driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
     }
-    private void ensureElementReady(By locator) {
-        driver.element().waitToBeReady(locator);
-    }
-
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
-                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -44,7 +39,6 @@ public class F_Verification_Account
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
-                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
