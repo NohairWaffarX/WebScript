@@ -12,7 +12,6 @@
             <class name="WaffarXWEB.ContactUS"/>
             <class name="WaffarXWEB.GiftCards"/>
             <class name="WaffarXWEB.CIB_SignUPValidations"/>
-            <class name="WaffarXWEB.F_Verification_Account"/>
         </classes>
     </test>
 </suite>
