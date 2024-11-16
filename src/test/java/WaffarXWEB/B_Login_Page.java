@@ -52,8 +52,8 @@ public class B_Login_Page
     @Test
     public void A_Check_that_ErrorAppear_whenInsert_WrongEmail_and_CorrectPassword() throws InterruptedException {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohairrr@gmail.com", 30);
-        retryType(Password, "Ng555555", 30);
+        retryType(Email, "gnohairrr@gmail.com", 40);
+        retryType(Password, "Ng555555", 40);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
     }
@@ -62,8 +62,8 @@ public class B_Login_Page
     public void B_Check_that_ErrorAppear_whenInsert_CorrectEmail_and_WrongPassword()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@gmail.com", 30);
-        retryType(Password, "Qw22222", 30);
+        retryType(Email, "gnohair@gmail.com", 40);
+        retryType(Password, "Qw22222", 40);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(Error).text().isEqualTo("Wrong Username Or Password").perform();
     }
@@ -72,8 +72,8 @@ public class B_Login_Page
     public void C_Check_that_Login_workCorrectly()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@gmail.com", 30);
-        retryType(Password, "Ng555555", 30);
+        retryType(Email, "gnohair@gmail.com", 40);
+        retryType(Password, "Ng555555", 40);
         driver.element().keyPress(SignIN_Button, ENTER);
         By Search_text = By.id("searchtext");
         driver.element().verifyThat(Search_text).isVisible().perform();
@@ -83,7 +83,7 @@ public class B_Login_Page
     public void D_Check_that_ErrorAppear_whenInsert_WrongFormat_inEmail()
     {
         clickAlreadyMemberButton() ;
-        retryType(Email, "gnohair@", 30);
+        retryType(Email, "gnohair@", 40);
         driver.element().keyPress(SignIN_Button, ENTER);
         driver.element().verifyThat(SignIN_Button).isVisible().perform();
     }
