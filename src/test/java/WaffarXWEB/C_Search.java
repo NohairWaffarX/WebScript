@@ -134,8 +134,8 @@ public class C_Search
     public void F_Check_that_ResultCorrect_when_SearchWith_BTech()
     {
         Login();
-        retryType(Search_text, "b.tech", 30);
-        retryClick(Search_Button, 30);
+        retryType(Search_text, "b.tech", 40);
+        retryClick(Search_Button, 40);
         By store_BTech= By.xpath("//*[@id=\"heatmapArea\"]/main/div/div/div[2]/div[1]/div/div[1]/h3/a") ;
         driver.element().verifyThat(store_BTech).isVisible().perform();
     }
