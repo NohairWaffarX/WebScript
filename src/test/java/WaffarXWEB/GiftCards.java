@@ -26,7 +26,7 @@ public class GiftCards {
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -47,7 +47,7 @@ public class GiftCards {
                 System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry type.", ie);
@@ -66,22 +66,22 @@ public class GiftCards {
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 30);
+        retryType(Email, "gnohair@gmail.com", 40);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 30);
+        retryType(Password, "Ng555555", 40);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By Tab_GiftCards = By.linkText("Gift Cards");
-        retryClick(Tab_GiftCards, 30);
+        retryClick(Tab_GiftCards, 40);
 
         By CloseBrowser_extension = By.xpath("//*[@id=\"closeAds\"]/i") ;
         driver.element().clickUsingJavascript(CloseBrowser_extension);
 
         By Amazon_GiftCards = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div[3]/div[2]/div[1]/a/img");
-        retryClick(Amazon_GiftCards, 30);
+        retryClick(Amazon_GiftCards, 40);
 
         driver.element().clickUsingJavascript(CloseBrowser_extension);
 
@@ -112,7 +112,7 @@ public class GiftCards {
         By Minus_Button = By.xpath("//*[@id=\"minusBtn\"]/i") ;
 
         for (int i=0 ; i<=5 ; i++) {
-            retryClick(Plus_Button, 30);
+            retryClick(Plus_Button, 40);
         }
 
         driver.element().verifyThat(SubTotal).text().isEqualTo("110").perform();
@@ -120,7 +120,7 @@ public class GiftCards {
         driver.element().verifyThat(CardAmount).text().isEqualTo("110").perform();
 
         for(int i=0 ; i<=8 ; i++) {
-            retryClick(Minus_Button, 30);
+            retryClick(Minus_Button, 40);
         }
 
         driver.element().verifyThat(SubTotal).text().isEqualTo("20").perform();
@@ -131,7 +131,7 @@ public class GiftCards {
     @Test
     public void C_CheckThat_WhenInsert_value_AllDataAppearCorrect() {
         Open_GiftCards_Page();
-        retryType(number, "5000", 30);
+        retryType(number, "5000", 40);
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(SubTotal).text().isEqualTo("5000").perform();
         driver.element().verifyThat(TotalAmount).text().isEqualTo("5000").perform();
@@ -141,7 +141,7 @@ public class GiftCards {
     @Test
     public void D_CheckThat_ErrorAppear_When_NumberLessThanMin() {
         Open_GiftCards_Page();
-        retryType(number, "0", 30);
+        retryType(number, "0", 40);
         driver.element().keyPress(number , TAB) ;
         driver.element().verifyThat(Error).text().isEqualTo("The amount must be between 1 and 6000").perform();
     }
