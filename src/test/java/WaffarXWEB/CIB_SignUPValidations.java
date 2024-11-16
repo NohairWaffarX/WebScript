@@ -18,15 +18,10 @@ public class CIB_SignUPValidations
         driver.browser().navigateToURL("https://portal-test.waffarx.com/en-eg");
     }
 
-    private void ensureElementReady(By locator) {
-        driver.element().waitToBeReady(locator);
-    }
-
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
-                ensureElementReady(locator);
                 driver.element().click(locator);
                 System.out.println("Successfully clicked the element on attempt " + (attempt + 1));
                 return; // Exit the method if click is successful
@@ -48,7 +43,6 @@ public class CIB_SignUPValidations
         int attempt = 0;
         while (attempt < maxRetries) {
             try {
-                ensureElementReady(locator);
                 driver.element().type(locator, text);
                 System.out.println("Successfully typed into the element on attempt " + (attempt + 1));
                 return; // Exit the method if typing is successful
