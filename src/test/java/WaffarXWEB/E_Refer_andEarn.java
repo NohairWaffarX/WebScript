@@ -25,7 +25,7 @@ public class E_Refer_andEarn
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -46,7 +46,7 @@ public class E_Refer_andEarn
                 System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry type.", ie);
@@ -65,16 +65,16 @@ public class E_Refer_andEarn
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 30);
+        retryType(Email, "gnohair@gmail.com", 40);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 30);
+        retryType(Password, "Ng555555", 40);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
 
         By Refer_button = By.linkText("Refer & Earn") ;
-        retryClick(Refer_button, 30);
+        retryClick(Refer_button, 40);
 
         UserEmail = By.id("toEmail");
         Send_Invitation_button = By.id("sendReferral");
@@ -85,8 +85,8 @@ public class E_Refer_andEarn
     public void A_Check_that_ErrorAppear_whenEmail_IsEmpty()
     {
         Open_Refer_Page() ;
-        retryType(UserEmail, " ", 30);
-        retryClick(Send_Invitation_button, 30);
+        retryType(UserEmail, " ", 40);
+        retryClick(Send_Invitation_button, 40);
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
@@ -94,8 +94,8 @@ public class E_Refer_andEarn
     public void B_Check_that_ErrorAppear_WhenInsert_WrongFormat_InEmail()
     {
         Open_Refer_Page() ;
-        retryType(UserEmail, "jkjkdj", 30);
-        retryClick(Send_Invitation_button, 30);
+        retryType(UserEmail, "jkjkdj", 40);
+        retryClick(Send_Invitation_button, 40);
         driver.element().verifyThat(Error).text().isEqualTo("Please enter a valid email address").perform();
     }
 
@@ -103,8 +103,8 @@ public class E_Refer_andEarn
     public void C_Check_that_ErrorAppear_WhenRefer_yourself()
     {
         Open_Refer_Page() ;
-        retryType(UserEmail, "gnohair@gmail.com", 30);
-        retryClick(Send_Invitation_button, 30);
+        retryType(UserEmail, "gnohair@gmail.com", 40);
+        retryClick(Send_Invitation_button, 40);
         driver.element().verifyThat(Error).text().isEqualTo("You cannot refer yourself.").perform();
     }
 
@@ -112,8 +112,8 @@ public class E_Refer_andEarn
     public void D_Check_that_ErrorAppear_WhenRefer_Mail_already_InWaffarX()
     {
         Open_Refer_Page() ;
-        retryType(UserEmail, "mg55851@gmail.com", 30);
-        retryClick(Send_Invitation_button, 30);
+        retryType(UserEmail, "mg55851@gmail.com", 40);
+        retryClick(Send_Invitation_button, 40);
         driver.element().verifyThat(Error).text().isEqualTo("This email is already registered.").perform();
     }
 
@@ -121,34 +121,10 @@ public class E_Refer_andEarn
     public void D_Check_that_ErrorAppear_WhenMail_already_referred()
     {
         Open_Refer_Page() ;
-        retryType(UserEmail, "j23134263@gmail.com", 30);
-        retryClick(Send_Invitation_button, 30);
+        retryType(UserEmail, "j23134263@gmail.com", 40);
+        retryClick(Send_Invitation_button, 40);
         driver.element().verifyThat(Error).text().isEqualTo("This user has already been referred.").perform();
     }
-
-//    @Test(priority = 6)
-//    public void Check_that_Refer_WorkCorrectly()
-//    {
-//        Open_Refer_Page() ;
-////        By Email = By.id("toEmail");
-////        driver.element().type(Email, "refer4565@gmail.com");
-////
-////        By Send_Invitation_button = By.id("sendReferral");
-////        driver.element().click(Send_Invitation_button) ;
-////
-////        By message = By.className("text-muted") ;
-////        driver.element().verifyThat(message).text().isEqualTo("Email sent successfully").perform();
-////
-////        By OK = By.className("confirm") ;
-////        driver.element().click(OK) ;
-////
-////        driver.browser().refreshCurrentPage();
-//        By invited_Tab = By.xpath("//*[@id=\"heatmapArea\"]/main/div/div[3]/div/div/div/ul/li[1]/a");
-//        driver.element().scrollToElement(invited_Tab);
-//        System.out.print("ok");
-////        By EmailFound = By.xpath("//*[@id=\"invited\"]/p[1]/b/text()[1]");
-////        driver.element().verifyThat(EmailFound).isVisible().perform();
-//    }
 
     @AfterMethod
     public void CloseDriver()
