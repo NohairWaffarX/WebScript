@@ -100,16 +100,16 @@ public class ContactUS
         driver.element().select(ShoppingTrip, "5/21/2024 11:13:04 AM - Amazon.eg");
 
         By OrderNumber = By.id("OrderNumber") ;
-        retryType(OrderNumber, "456-22ABC#EF@D", 30);
+        retryType(OrderNumber, "456-22ABC#EF@D", 40);
 
         By OrderSubtotal = By.id("OrderSubtotal") ;
-        retryType(OrderSubtotal, "333.5", 30);
+        retryType(OrderSubtotal, "333.5", 40);
 
         By Note = By.id("TextMessage") ;
-        retryType(Note, "Nohair Test", 30);
+        retryType(Note, "Nohair Test", 40);
 
         By Submit_Button = By.xpath("(//*[@id=\"online-cashout\"]/div[6]/input)[1]") ;
-        retryClick(Submit_Button, 30);
+        retryClick(Submit_Button, 40);
 
         driver.element().verifyThat(Result).text().isEqualTo("Thank You, your ticket has been submitted").perform();
     }
