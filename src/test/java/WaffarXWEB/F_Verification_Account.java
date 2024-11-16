@@ -11,8 +11,8 @@ public class F_Verification_Account
     @BeforeMethod
     public void setupBrowser()
     {
-        driver = new SHAFT.GUI.WebDriver(); // to open browser
-        driver.browser().navigateToURL("https://www.waffarx.com/en-eg"); // to navigate to URL
+        driver = new SHAFT.GUI.WebDriver();
+        driver.browser().navigateToURL("https://www.waffarx.com/en-eg");
     }
     private void retryClick(By locator, int maxRetries) {
         int attempt = 0;
@@ -25,7 +25,7 @@ public class F_Verification_Account
                 System.out.println("Click intercepted on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry click.", ie);
@@ -46,7 +46,7 @@ public class F_Verification_Account
                 System.out.println("Element not interactable on attempt " + (attempt + 1) + ". Retrying...");
                 attempt++;
                 try {
-                    Thread.sleep(800); // Wait before retrying (500 ms)
+                    Thread.sleep(800);
                 } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Interrupted while waiting to retry type.", ie);
@@ -66,10 +66,10 @@ public class F_Verification_Account
         driver.element().clickUsingJavascript(AlreadyMember_Button);
 
         By Email = By.id("LoginEmail");
-        retryType(Email, "gnohair@gmail.com", 30);
+        retryType(Email, "gnohair@gmail.com", 40);
 
         By Password = By.id("LoginPassword");
-        retryType(Password, "Ng555555", 30);
+        retryType(Password, "Ng555555", 40);
 
         By SignIN_Button = By.xpath("//*[@id=\"Login\"]/div[4]/input");
         driver.element().keyPress(SignIN_Button, ENTER);
@@ -85,8 +85,8 @@ public class F_Verification_Account
     public void AA_Check_that_ErrorAppear_whenInsert_Number_AlreadyUsed()
     {
         Open_PopupOF_VerifyAccount() ;
-        retryType(PhoneNumber_Field, "01277249225", 20);
-        retryClick(SendCode_Button, 30);
+        retryType(PhoneNumber_Field, "01277249225", 40);
+        retryClick(SendCode_Button, 40);
         By Error= By.className("ExistedMobNumber") ;
         driver.element().verifyThat(Error).text().isEqualTo("This mobile number has already been registered.").perform();
     }
@@ -95,8 +95,8 @@ public class F_Verification_Account
     public void B_Check_that_ErrorAppear_whenInsert_LessThan_MinLimitation_InMobileNumber()
     {
         Open_PopupOF_VerifyAccount() ;
-        retryType(PhoneNumber_Field, "012", 30);
-        retryClick(SendCode_Button, 30);
+        retryType(PhoneNumber_Field, "012", 40);
+        retryClick(SendCode_Button, 40);
         By Error= By.id("phone-error");
         driver.element().verifyThat(Error).text().isEqualTo("Sorry, Arabic and special characters are not allowed, please make sure you enter a valid input.").perform();
     }
@@ -105,8 +105,8 @@ public class F_Verification_Account
     public void C_Check_that_ErrorAppear_whenInsert_GreaterThan_MaxLimitation_InMobileNumber()
     {
         Open_PopupOF_VerifyAccount() ;
-        retryType(PhoneNumber_Field, "0127724999999999888", 30);
-        retryClick(SendCode_Button, 30);
+        retryType(PhoneNumber_Field, "0127724999999999888", 40);
+        retryClick(SendCode_Button, 40);
         By Error= By.id("WrongEgMobNumber");
         driver.element().verifyThat(Error).text().isEqualTo("Please make sure that phone number is true, contains only numbers and consist of 11 number.").perform();
 
@@ -114,18 +114,18 @@ public class F_Verification_Account
     @Test
     public void D_Verify_Account_exceed3times() throws InterruptedException {
         Open_PopupOF_VerifyAccount() ;
-        retryType(PhoneNumber_Field, "01067802082", 30);
-        retryClick(SendCode_Button, 30);
+        retryType(PhoneNumber_Field, "01067802082", 40);
+        retryClick(SendCode_Button, 40);
 
         By ReSend = By.id("ReSendCode");
         Thread.sleep(140000);
-        retryClick(ReSend, 30);  // After click on it , Second otp send
+        retryClick(ReSend, 40);  // After click on it , Second otp send
 
         Thread.sleep(140000);
-        retryClick(ReSend, 30); // After click on it , third otp send
+        retryClick(ReSend, 40); // After click on it , third otp send
 
         Thread.sleep(140000);
-        retryClick(ReSend, 30);// After click on it , Error Message appear
+        retryClick(ReSend, 40);// After click on it , Error Message appear
 
         By Error= By.id("ExceedCount") ;
         driver.element().verifyThat(Error).text().isEqualTo("You exceed the number of times the activation code has been sent, please contact customer service to complete the activation process").perform();
@@ -136,10 +136,10 @@ public class F_Verification_Account
         Open_PopupOF_VerifyAccount();
 
         By VerificationCode_Text = By.xpath("(//*[@id='VerificationCode'])[2]");
-        retryType(VerificationCode_Text, "88888", 30);
+        retryType(VerificationCode_Text, "88888", 40);
 
         By VerifyAccount_Button = By.xpath("//*[@id=\"VerifyUserPhoneNumber\"]/input");
-        retryClick(VerifyAccount_Button, 30);
+        retryClick(VerifyAccount_Button, 40);
 
         By Error = By.xpath("//*[@id=\"WrongVerify\"]");
         driver.element().verifyThat(Error).text().isEqualTo("Invalid verification Code!").perform();
